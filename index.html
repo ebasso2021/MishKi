@@ -312,6 +312,8 @@ footer .logo{color:#fff}
 @media (max-width:820px){.sarita-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.benefits{grid-template-columns:1fr}.wa-float .txt{display:none}.wa-float{padding:14px}}
 
+.ai-chip{display:inline-block;font-family:var(--head);font-size:.62rem;font-weight:800;letter-spacing:.06em;background:var(--yellow);color:#3B2A1C;padding:2px 7px;border-radius:999px;vertical-align:middle}
+img[src^="images/"]{object-fit:contain!important;background:#E8ECEE}
 /* ---- floating dock ---- */
 .dock{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:flex-end;gap:10px}
 .fab{display:flex;align-items:center;gap:8px;border-radius:999px;font-family:var(--head);font-weight:800;font-size:.85rem;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s;height:56px}
@@ -569,19 +571,19 @@ footer .logo{color:#fff}
     <div class="sarita-card">
       <!-- Replace the "S" circle with Sarita's real photo: <img class="avatar" src="sarita.jpg" alt="Sarita"> -->
       <svg viewBox="0 0 120 120" class="avatar" role="img" aria-label="Sarita (illustration)"><use href="#sarita-av"/></svg>
-      <h3>Sarita</h3>
-      <p class="role" data-i18n="sa_role">Juice &amp; natural fruit specialist</p>
+      <h3>Sarita <span class="ai-chip">AI</span></h3>
+      <p class="role" data-i18n="sa_role">AI juice &amp; natural fruit specialist</p>
       <div class="badges">
         <span><i class="flag it"></i><i class="flag pe"></i> <b data-i18n="sa_b1" style="font-weight:600">Italian-Peruvian</b></span>
-        <span data-i18n="sa_b2">⭐ 15 years of experience</span>
+        <span data-i18n="sa_b2">🤖 AI assistant</span>
         <span data-i18n="sa_b3">🌎 South American superfruits</span>
       </div>
       <a class="btn btn-wa" data-wa href="https://wa.me/17807823341" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span data-i18n="sa_cta">Chat with Sarita</span></a>
       <p class="disclaimer">WhatsApp: <a href="https://wa.me/17807823341" data-wa target="_blank" rel="noopener">+1 (780) 782-3341</a></p>
     </div>
     <div>
-      <h2 data-i18n="sa_title">Meet Sarita, our juice expert</h2>
-      <p class="lead" data-i18n="sa_lead">Sarita is Italian-Peruvian and has 15 years of experience in juice bars and natural fruit. She knows the natural products of South America and loves explaining what goes into every glass — and why. Send her a message on WhatsApp with your questions.</p>
+      <h2 data-i18n="sa_title">Meet Sarita, our AI juice expert</h2>
+      <p class="lead" data-i18n="sa_lead">Sarita is Mishki\'s AI assistant, with an Italian-Peruvian personality. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Chat with her on WhatsApp at +1 (780) 782-3341.</p>
       <div class="benefits">
         <article class="benefit">
           <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?auto=format&fit=crop&w=700&q=70')"></div>
@@ -595,7 +597,7 @@ footer .logo{color:#fff}
           </div>
         </article>
         <article class="benefit">
-          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=700&q=70')"></div>
+          <div class="ph" style="background-image:url('images/maracuya.jpg');background-size:contain;background-repeat:no-repeat;background-color:#E8ECEE"></div>
           <div class="tx">
             <h3 data-i18n="sa_ma_t">Maracuyá Juice</h3>
             <ul>
@@ -808,7 +810,7 @@ footer .logo{color:#fff}
   <div class="agent-panel" id="agentPanel" role="dialog" aria-label="Sarita" hidden>
     <div class="ap-head">
       <svg viewBox="0 0 120 120" class="ap-av" role="img" aria-label="Sarita (illustration)"><use href="#sarita-av"/></svg>
-      <div><b>Sarita</b><small data-i18n="sa_role">Juice &amp; natural fruit specialist</small></div>
+      <div><b>Sarita <span class="ai-chip">AI</span></b><small data-i18n="sa_role">AI juice &amp; natural fruit specialist</small></div>
       <button type="button" class="ap-x" id="agentClose" aria-label="Close">✕</button>
     </div>
     <div class="ap-body" id="agentBody" aria-live="polite"></div>
@@ -844,12 +846,12 @@ const USERS = {
    ===================================================================== */
 const I18N = {
 en:{
- sa_role:"Juice & natural fruit specialist",sa_b1:"Italian-Peruvian",sa_b2:"⭐ 15 years of experience",sa_b3:"🌎 South American superfruits",sa_cta:"Chat with Sarita",
- sa_title:"Meet Sarita, our juice expert",sa_lead:"Sarita is Italian-Peruvian and has 15 years of experience in juice bars and natural fruit. She knows the natural products of South America and loves explaining what goes into every glass — and why. Send her a message on WhatsApp with your questions.",
+ sa_role:"AI juice & natural fruit specialist",sa_b1:"Italian-Peruvian personality",sa_b2:"🤖 AI assistant",sa_b3:"🌎 South American superfruits",sa_cta:"Chat with Sarita on WhatsApp",
+ sa_title:"Meet Sarita, our AI juice expert",sa_lead:"Sarita is Mishki's AI assistant, with an Italian-Peruvian personality. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Chat with her on WhatsApp at +1 (780) 782-3341.",
  sa_cm_t:"Chicha Morada",sa_cm_1:"Traditional Peruvian drink made from purple corn (maíz morado)",sa_cm_2:"Purple corn is naturally rich in anthocyanins — the antioxidant pigments that give it its deep colour",sa_cm_3:"Prepared with pineapple, cinnamon and clove",
  sa_ma_t:"Maracuyá Juice",sa_ma_1:"Made from passion fruit, a native South American fruit",sa_ma_2:"Contains vitamin C, vitamin A and potassium",sa_ma_3:"Naturally tangy, tropical and refreshing",
  sa_disc:"This information is for general education only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any disease.",
- wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Italian-Peruvian juice specialist with 15 years of experience. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"General information only — not medical advice.",ag_more:"Want to know more? Write to me on WhatsApp!",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
+ wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Mishki's AI assistant for juices and South American natural fruit. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"Sarita is an AI assistant. Answers are general information, not medical advice.",ag_more:"Want to know more? Write to me on WhatsApp!",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
  promo:"Fresh pressed in Edmonton, every day 🍊",
  nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_loyalty:"Loyalty",nav_gift:"Gift Cards",nav_contact:"Contact Us",
  intranet:"Intranet",intranet_login:"Staff Intranet Login",
@@ -881,12 +883,12 @@ en:{
  f_vegan:"Vegan",f_veg:"Vegetarian",f_prot:"Protein",f_df:"Dairy Free",f_gf:"Gluten Friendly",f_imm:"Immunity",f_post:"Post-workout",f_energy:"Energy"
 },
 es:{
- sa_role:"Especialista en jugos y frutas naturales",sa_b1:"Ítalo-peruana",sa_b2:"⭐ 15 años de experiencia",sa_b3:"🌎 Superfrutas de Sudamérica",sa_cta:"Escríbele a Sarita",
- sa_title:"Conoce a Sarita, nuestra experta en jugos",sa_lead:"Sarita es ítalo-peruana y tiene 15 años de experiencia en juguerías y frutas naturales. Conoce los productos naturales de Sudamérica y le encanta explicar qué lleva cada vaso — y por qué. Envíale tus preguntas por WhatsApp.",
+ sa_role:"Especialista virtual (IA) en jugos y frutas naturales",sa_b1:"Personalidad ítalo-peruana",sa_b2:"🤖 Asistente con IA",sa_b3:"🌎 Superfrutas de Sudamérica",sa_cta:"Chatea con Sarita por WhatsApp",
+ sa_title:"Conoce a Sarita, nuestra experta virtual en jugos",sa_lead:"Sarita es la asistente con inteligencia artificial de Mishki, con personalidad ítalo-peruana. Conoce los productos naturales de Sudamérica y te explica qué lleva cada vaso — como la chicha morada y el jugo de maracuyá. Chatea con ella por WhatsApp al +1 (780) 782-3341.",
  sa_cm_t:"Chicha Morada",sa_cm_1:"Bebida tradicional peruana hecha de maíz morado",sa_cm_2:"El maíz morado es naturalmente rico en antocianinas, los pigmentos antioxidantes que le dan su color intenso",sa_cm_3:"Preparada con piña, canela y clavo de olor",
  sa_ma_t:"Jugo de Maracuyá",sa_ma_1:"Hecho de maracuyá, una fruta nativa de Sudamérica",sa_ma_2:"Contiene vitamina C, vitamina A y potasio",sa_ma_3:"Naturalmente ácido, tropical y refrescante",
  sa_disc:"Esta información es solo educativa. No es consejo médico y no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad.",
- wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 especialista ítalo-peruana en jugos con 15 años de experiencia. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Información general, no es consejo médico.",ag_more:"¿Quieres saber más? ¡Escríbeme por WhatsApp!",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
+ wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 la asistente con IA de Mishki, especialista en jugos y frutas naturales de Sudamérica. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Sarita es una asistente con IA. Sus respuestas son información general, no consejo médico.",ag_more:"¿Quieres saber más? ¡Escríbeme por WhatsApp!",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
  promo:"Recién exprimido en Edmonton, todos los días 🍊",
  nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_loyalty:"Recompensas",nav_gift:"Tarjetas de Regalo",nav_contact:"Contáctanos",
  intranet:"Intranet",intranet_login:"Acceso Intranet Personal",
@@ -937,7 +939,7 @@ const P=[
  {img:"1600271886742-f049cd451bba",cat:"juices",c:["#F8A34C","#FFDBA6"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
  {img:"1628751584748-0d780bad3f06",cat:"juices",c:["#6DA470","#D6EAC0"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
  {img:"1615478503562-ec2d8aa0e24e",active:true,cat:"juices",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Juice","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Jugo de Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
- {img:"1525385133512-2f3bdd039054",active:true,cat:"juices",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Juice","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Jugo de Maracuyá","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
+ {img:"images/maracuya.jpg",active:true,cat:"juices",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Juice","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Jugo de Maracuyá","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
  {img:"1627308594190-a057cd4bfac8",cat:"bowls",c:["#975FB8","#CABAE6"],tags:["vegan","df","energy"],en:["Açaí Classic Bowl","Açaí, banana and berries topped with granola and coconut.","Açaí|Banana|Berries|Granola|Coconut"],es:["Bowl Clásico de Açaí","Açaí, plátano y frutos rojos con granola y coco.","Açaí|Plátano|Frutos rojos|Granola|Coco"]},
  {img:"1621797350488-fb28c9217e3b",cat:"bowls",c:["#EE854C","#FFE9C9"],tags:["veg","energy"],en:["Lúcuma Dream Bowl","Lúcuma, banana and yogurt topped with quinoa pops and honey.","Lúcuma|Banana|Yogurt|Puffed quinoa|Honey"],es:["Bowl Sueño de Lúcuma","Lúcuma, plátano y yogur con quinua pop y miel.","Lúcuma|Plátano|Yogur|Quinua pop|Miel"]},
  {img:"1624128082309-35000879a89f",cat:"snacks",c:["#D2A679","#FFE9BF"],tags:["veg"],en:["Cheese Empanada","Golden baked empanada filled with melted cheese.","Wheat dough|Cheese|Butter"],es:["Empanada de Queso","Empanada horneada rellena de queso derretido.","Masa de trigo|Queso|Mantequilla"]},
@@ -955,9 +957,9 @@ let lang = store.get("mishki_lang")==="es" ? "es" : "en";
 let activeCat = null; const activeFilters = new Set();
 const t = k => (I18N[lang][k] ?? I18N.en[k] ?? k);
 
-const ph=(id,w)=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+const ph=(id,w)=>id.startsWith("images/")?id:`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
 const catImg=id=>(P.find(p=>p.cat===id&&p.active)||P.find(p=>p.cat===id)||{img:"1615478503562-ec2d8aa0e24e"}).img;
-const ORDER=["1525385133512-2f3bdd039054","1615478503562-ec2d8aa0e24e"];
+const ORDER=["images/maracuya.jpg","1615478503562-ec2d8aa0e24e"];
 const rank=p=>p.active?ORDER.indexOf(p.img):(p.cat==="juices"?10:20);
 function cupSVG(c){return `<svg viewBox="0 0 120 160" aria-hidden="true"><path d="M28 34h64l-8 112a8 8 0 0 1-8 7H44a8 8 0 0 1-8-7z" fill="#fff"/><path d="M33 56h54l-6 86a6 6 0 0 1-6 5H45a6 6 0 0 1-6-5z" fill="${c[0]}"/><path d="M33 56h54l-1.5 18h-51z" fill="${c[1]}"/><rect x="20" y="26" width="80" height="12" rx="6" fill="#fff"/><path d="M70 28l14-26" stroke="#6CB33F" stroke-width="6" stroke-linecap="round"/></svg>`}
 
