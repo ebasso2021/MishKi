@@ -272,7 +272,7 @@ footer .logo{color:#fff}
 /* toast */
 .toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;z-index:200;transition:transform .3s;font-weight:600;font-size:.9rem;max-width:calc(100vw - 32px);text-align:center}
 .toast.show{transform:translate(-50%,0)}
-.to-top{position:fixed;right:16px;bottom:16px;width:48px;height:48px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.3rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.to-top{position:fixed;left:16px;bottom:16px;width:48px;height:48px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.3rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;z-index:40}
 .to-top.show{opacity:1;pointer-events:auto}
 
 /* reveal */
@@ -284,7 +284,7 @@ footer .logo{color:#fff}
 .sarita{background:linear-gradient(180deg,#fff 0%,var(--soft) 100%)}
 .sarita-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,56px);align-items:center}
 .sarita-card{background:#fff;border-radius:28px;box-shadow:var(--shadow);padding:32px 28px;text-align:center;position:relative}
-.avatar{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-family:var(--head);font-weight:900;font-size:4rem;color:#fff;background:linear-gradient(135deg,var(--orange),var(--berry));border:6px solid #fff;box-shadow:0 10px 30px rgba(60,50,30,.15)}
+.avatar{width:150px;height:150px;border-radius:50%;padding:0;background:#F6D9BF;margin:0 auto 18px;display:grid;place-items:center;font-family:var(--head);font-weight:900;font-size:4rem;color:#fff;background:linear-gradient(135deg,var(--orange),var(--berry));border:6px solid #fff;box-shadow:0 10px 30px rgba(60,50,30,.15)}
 .sarita-card h3{font-size:1.6rem;color:var(--green-dk)}
 .sarita-card .role{color:var(--muted);font-size:.92rem;margin-top:4px}
 .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0 22px}
@@ -311,6 +311,36 @@ footer .logo{color:#fff}
 .wa-float svg{width:26px;height:26px}
 @media (max-width:820px){.sarita-grid{grid-template-columns:1fr}}
 @media (max-width:560px){.benefits{grid-template-columns:1fr}.wa-float .txt{display:none}.wa-float{padding:14px}}
+
+/* ---- floating dock ---- */
+.dock{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:flex-end;gap:10px}
+.fab{display:flex;align-items:center;gap:8px;border-radius:999px;font-family:var(--head);font-weight:800;font-size:.85rem;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s;height:56px}
+.fab:hover{transform:translateY(-3px)}
+.agent-fab{background:#fff;color:var(--ink);padding:4px 18px 4px 4px;border:2px solid var(--orange)}
+.fab-av{position:relative;width:46px;height:46px;flex:none}
+.fab-av svg{width:46px;height:46px;border-radius:50%;display:block}
+.online{position:absolute;right:0;bottom:1px;width:12px;height:12px;border-radius:50%;background:#25D366;border:2px solid #fff}
+.wa-fab{background:#25D366;color:#073B1C;width:56px;padding:0;justify-content:center}
+.wa-fab svg{width:30px;height:30px}
+.wa-fab svg{width:26px;height:26px}
+.agent-panel{position:absolute;right:0;bottom:70px;width:min(340px,calc(100vw - 32px));background:#fff;border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.22);overflow:hidden;animation:fade .25s}
+.agent-panel[hidden]{display:none}
+.ap-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--green-dk);color:#fff}
+.ap-head .ap-av{width:44px;height:44px;border-radius:50%;border:2px solid #fff;flex:none}
+.ap-head small{display:block;font-size:.75rem;opacity:.9}
+.ap-x{margin-left:auto;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff}
+.ap-body{padding:14px 16px;max-height:min(46vh,340px);overflow-y:auto;display:flex;flex-direction:column;gap:10px;background:var(--soft)}
+.bub{background:#fff;border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:.88rem;box-shadow:0 2px 6px rgba(0,0,0,.05);max-width:92%}
+.bub.me{align-self:flex-end;background:#E3EFD9;border-radius:16px 16px 4px 16px}
+.bub ul{list-style:none;margin-top:4px}
+.bub li{padding-left:18px;position:relative;margin:4px 0}
+.bub li::before{content:"✓";position:absolute;left:0;color:var(--green-dk);font-weight:800}
+.ap-qs{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 4px}
+.ap-qs button{border:2px solid var(--line);border-radius:999px;padding:7px 12px;font-size:.78rem;font-weight:700;background:#fff}
+.ap-qs button:hover{border-color:var(--green)}
+.ap-wa{margin:10px 16px 6px;width:calc(100% - 32px);padding:12px 16px}
+.ap-note{font-size:.7rem;color:var(--muted);text-align:center;padding:0 16px 12px}
+@media (max-width:560px){.fab .txt{display:none}.agent-fab{padding:3px;border-width:2px}.wa-fab{width:56px;padding:0;justify-content:center}}
 
 /* ================= RESPONSIVE ================= */
 /* Large laptops / MacBook Pro 16" and up */
@@ -374,6 +404,22 @@ footer .logo{color:#fff}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="avClip"><circle cx="60" cy="60" r="60"/></clipPath></defs>
+<symbol id="sarita-av" viewBox="0 0 120 120"><g clip-path="url(#avClip)">
+<rect width="120" height="120" fill="#F6D9BF"/>
+<path d="M26 60c0-24 15-40 34-40s34 16 34 40v38c0 8-6 14-12 16H38c-6-2-12-8-12-16z" fill="#3B2418"/>
+<rect x="52" y="76" width="16" height="18" rx="6" fill="#C48A62"/>
+<path d="M18 122c2-20 19-31 42-31s40 11 42 31z" fill="#6E9E57"/>
+<path d="M50 91l10 9 10-9" fill="none" stroke="#557F45" stroke-width="2"/>
+<ellipse cx="60" cy="58" rx="20" ry="23" fill="#D9A27A"/>
+<path d="M37 58c1-20 12-31 24-31 13 0 23 9 23 26-9-2-17-8-21-17-4 11-14 19-26 22z" fill="#3B2418"/>
+<path d="M47 54q5-3 9 0M64 54q5-3 9 0" stroke="#2B1A12" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+<circle cx="52" cy="60" r="2.3" fill="#2B1A12"/><circle cx="68" cy="60" r="2.3" fill="#2B1A12"/>
+<circle cx="47" cy="67" r="3.6" fill="#E9967A" opacity=".45"/><circle cx="73" cy="67" r="3.6" fill="#E9967A" opacity=".45"/>
+<path d="M53 69q7 6 14 0" stroke="#9C4A3A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<circle cx="40" cy="67" r="2.6" fill="#F5D88A"/><circle cx="80" cy="67" r="2.6" fill="#F5D88A"/>
+<circle cx="81" cy="37" r="5.5" fill="#F2A774"/><circle cx="81" cy="37" r="2.2" fill="#F5D88A"/>
+</g></symbol></svg>
 
 <!-- ================= TOP BAR ================= -->
 <div class="topbar">
@@ -522,7 +568,7 @@ footer .logo{color:#fff}
   <div class="wrap sarita-grid reveal">
     <div class="sarita-card">
       <!-- Replace the "S" circle with Sarita's real photo: <img class="avatar" src="sarita.jpg" alt="Sarita"> -->
-      <div class="avatar" aria-hidden="true">S</div>
+      <svg viewBox="0 0 120 120" class="avatar" role="img" aria-label="Sarita (illustration)"><use href="#sarita-av"/></svg>
       <h3>Sarita</h3>
       <p class="role" data-i18n="sa_role">Juice &amp; natural fruit specialist</p>
       <div class="badges">
@@ -757,7 +803,27 @@ footer .logo{color:#fff}
 </div>
 
 <div class="toast" id="toast" role="status"></div>
-<a class="wa-float" data-wa href="https://wa.me/17807823341" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span class="txt" data-i18n="wa_float">Ask Sarita</span></a>
+<!-- ================= FLOATING DOCK: SARITA AGENT + WHATSAPP ================= -->
+<div class="dock">
+  <div class="agent-panel" id="agentPanel" role="dialog" aria-label="Sarita" hidden>
+    <div class="ap-head">
+      <svg viewBox="0 0 120 120" class="ap-av" role="img" aria-label="Sarita (illustration)"><use href="#sarita-av"/></svg>
+      <div><b>Sarita</b><small data-i18n="sa_role">Juice &amp; natural fruit specialist</small></div>
+      <button type="button" class="ap-x" id="agentClose" aria-label="Close">✕</button>
+    </div>
+    <div class="ap-body" id="agentBody" aria-live="polite"></div>
+    <div class="ap-qs">
+      <button type="button" data-q="cm" data-i18n="ag_q1">Benefits of Chicha Morada</button>
+      <button type="button" data-q="ma" data-i18n="ag_q2">Benefits of Maracuyá Juice</button>
+    </div>
+    <a class="btn btn-wa ap-wa" data-wa href="https://wa.me/17807823341" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span data-i18n="ag_wa">Continue on WhatsApp</span></a>
+    <p class="ap-note" data-i18n="ag_note">General information only — not medical advice.</p>
+  </div>
+  <button type="button" class="fab agent-fab" id="agentFab" aria-expanded="false" aria-controls="agentPanel">
+    <span class="fab-av"><svg viewBox="0 0 120 120" class="" role="img" aria-label="Sarita (illustration)"><use href="#sarita-av"/></svg><i class="online"></i></span><span class="txt" data-i18n="wa_float">Sarita</span>
+  </button>
+  <a class="fab wa-fab" data-wa href="https://wa.me/17807823341" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+</div>
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
 
 <script>
@@ -783,7 +849,7 @@ en:{
  sa_cm_t:"Chicha Morada",sa_cm_1:"Traditional Peruvian drink made from purple corn (maíz morado)",sa_cm_2:"Purple corn is naturally rich in anthocyanins — the antioxidant pigments that give it its deep colour",sa_cm_3:"Prepared with pineapple, cinnamon and clove",
  sa_ma_t:"Maracuyá Juice",sa_ma_1:"Made from passion fruit, a native South American fruit",sa_ma_2:"Contains vitamin C, vitamin A and potassium",sa_ma_3:"Naturally tangy, tropical and refreshing",
  sa_disc:"This information is for general education only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any disease.",
- wa_float:"Ask Sarita",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
+ wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Italian-Peruvian juice specialist with 15 years of experience. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"General information only — not medical advice.",ag_more:"Want to know more? Write to me on WhatsApp!",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
  promo:"Fresh pressed in Edmonton, every day 🍊",
  nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_loyalty:"Loyalty",nav_gift:"Gift Cards",nav_contact:"Contact Us",
  intranet:"Intranet",intranet_login:"Staff Intranet Login",
@@ -820,7 +886,7 @@ es:{
  sa_cm_t:"Chicha Morada",sa_cm_1:"Bebida tradicional peruana hecha de maíz morado",sa_cm_2:"El maíz morado es naturalmente rico en antocianinas, los pigmentos antioxidantes que le dan su color intenso",sa_cm_3:"Preparada con piña, canela y clavo de olor",
  sa_ma_t:"Jugo de Maracuyá",sa_ma_1:"Hecho de maracuyá, una fruta nativa de Sudamérica",sa_ma_2:"Contiene vitamina C, vitamina A y potasio",sa_ma_3:"Naturalmente ácido, tropical y refrescante",
  sa_disc:"Esta información es solo educativa. No es consejo médico y no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad.",
- wa_float:"Pregúntale a Sarita",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
+ wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 especialista ítalo-peruana en jugos con 15 años de experiencia. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Información general, no es consejo médico.",ag_more:"¿Quieres saber más? ¡Escríbeme por WhatsApp!",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
  promo:"Recién exprimido en Edmonton, todos los días 🍊",
  nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_loyalty:"Recompensas",nav_gift:"Tarjetas de Regalo",nav_contact:"Contáctanos",
  intranet:"Intranet",intranet_login:"Acceso Intranet Personal",
@@ -899,6 +965,7 @@ function applyLang(){
   document.documentElement.lang = lang;
   $$("[data-i18n]").forEach(el=>{el.textContent=t(el.dataset.i18n)});
   $$("[data-i18n-ph]").forEach(el=>{el.placeholder=t(el.dataset.i18nPh)});
+  if(window.agentReady&&!agentPanel.hidden)agentReset();
   $$("[data-wa]").forEach(a=>{a.href="https://wa.me/17807823341?text="+encodeURIComponent(t("wa_msg"))});
   $$(".lang-switch").forEach(sw=>{sw.dataset.lang=lang;$$("button",sw).forEach(b=>b.setAttribute("aria-pressed",b.dataset.setLang===lang))});
   document.title = lang==="es" ? "Mishki Juice Bar | Batidos y Jugos Saludables y Deliciosos – Edmonton" : "Mishki Juice Bar | Healthy & Great Tasting Smoothies and Juice – Edmonton";
@@ -935,7 +1002,20 @@ let lastFocus=null;
 function openModal(m){lastFocus=document.activeElement;m.classList.add("open");document.body.style.overflow="hidden";setTimeout(()=>($("input",m)||$(".x",m)).focus(),50)}
 function closeModal(m){m.classList.remove("open");document.body.style.overflow="";lastFocus&&lastFocus.focus&&lastFocus.focus()}
 $$(".modal").forEach(m=>{m.addEventListener("click",e=>{if(e.target===m||e.target.closest("[data-close-modal]"))closeModal(m)})});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){$$(".modal.open").forEach(closeModal);closeDrawer()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$$(".modal.open").forEach(closeModal);closeDrawer();closeAgent()}});
+/* ---- Sarita agent panel ---- */
+const agentPanel=$("#agentPanel"), agentFab=$("#agentFab"), agentBody=$("#agentBody");
+function agentReset(){agentBody.innerHTML=`<div class="bub">${t("ag_hello")}</div>`}
+function openAgent(){agentReset();agentPanel.hidden=false;agentFab.setAttribute("aria-expanded","true")}
+function closeAgent(){if(agentPanel.hidden)return;agentPanel.hidden=true;agentFab.setAttribute("aria-expanded","false")}
+window.agentReady=true;
+agentFab.onclick=()=>agentPanel.hidden?openAgent():closeAgent();
+$("#agentClose").onclick=closeAgent;
+$$(".ap-qs button").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.q, title=t(k==="cm"?"sa_cm_t":"sa_ma_t");
+  agentBody.insertAdjacentHTML("beforeend",`<div class="bub me">${b.textContent}</div><div class="bub"><b>${title}</b><ul>${[1,2,3].map(i=>`<li>${t("sa_"+k+"_"+i)}</li>`).join("")}</ul>${t("ag_more")}</div>`);
+  agentBody.scrollTop=agentBody.scrollHeight;
+});
 
 function openProduct(i){
   const p=P[i], d=p[lang];
