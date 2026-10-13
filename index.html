@@ -99,8 +99,9 @@ nav.main a:hover::after{width:100%}
 
 /* ================= HERO SLIDER ================= */
 .hero{position:relative;overflow:hidden;background:var(--soft)}
-.slides{display:flex;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.slide{min-width:100%;position:relative;min-height:clamp(440px,62vh,640px);display:flex;align-items:center}
+.slide.active{opacity:1;visibility:visible;z-index:1;transition:opacity 1.4s ease,visibility 0s}
+.slides{display:grid}
+.slide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity 1.4s ease,visibility 0s linear 1.4s;min-width:100%;position:relative;min-height:clamp(440px,62vh,640px);display:flex;align-items:center}
 .slide .wrap{display:grid;grid-template-columns:minmax(0,640px);align-items:center;gap:32px;width:100%;padding-top:40px;padding-bottom:60px}
 .slide h1,.slide h2{font-size:clamp(2.1rem,5.4vw,4.2rem);font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
 .slide p{font-size:clamp(1rem,1.6vw,1.2rem);margin:16px 0 28px;max-width:520px}
@@ -314,6 +315,7 @@ footer .logo{color:#fff}
 
 .ai-chip{display:inline-block;font-family:var(--head);font-size:.62rem;font-weight:800;letter-spacing:.06em;background:var(--yellow);color:#3B2A1C;padding:2px 7px;border-radius:999px;vertical-align:middle}
 img[src^="images/"]{object-fit:contain!important;background:#E8ECEE}
+img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
 /* ---- floating dock ---- */
 .dock{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:flex-end;gap:10px}
 .fab{display:flex;align-items:center;gap:8px;border-radius:999px;font-family:var(--head);font-weight:800;font-size:.85rem;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s;height:56px}
@@ -340,7 +342,12 @@ img[src^="images/"]{object-fit:contain!important;background:#E8ECEE}
 .ap-qs{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 4px}
 .ap-qs button{border:2px solid var(--line);border-radius:999px;padding:7px 12px;font-size:.78rem;font-weight:700;background:#fff}
 .ap-qs button:hover{border-color:var(--green)}
-.ap-wa{margin:10px 16px 6px;width:calc(100% - 32px);padding:12px 16px}
+.ap-ask{display:flex;gap:8px;padding:10px 16px 8px}
+.ap-ask input{flex:1;min-width:0;border:2px solid var(--line);border-radius:999px;padding:11px 16px;font:inherit;font-size:.9rem}
+.ap-ask input:focus{outline:none;border-color:var(--green)}
+.ap-ask button{width:44px;height:44px;border-radius:50%;background:var(--green-dk);color:#fff;display:grid;place-items:center;flex:none}
+.ap-ask button svg{width:20px;height:20px}
+.bub.typing{color:var(--muted);letter-spacing:.2em}
 .ap-note{font-size:.7rem;color:var(--muted);text-align:center;padding:0 16px 12px}
 @media (max-width:560px){.fab .txt{display:none}.agent-fab{padding:3px;border-width:2px}.wa-fab{width:56px;padding:0;justify-content:center}}
 
@@ -586,7 +593,7 @@ img[src^="images/"]{object-fit:contain!important;background:#E8ECEE}
       <p class="lead" data-i18n="sa_lead">Sarita is Mishki\'s AI assistant, with an Italian-Peruvian personality. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Chat with her on WhatsApp at +1 (780) 782-3341.</p>
       <div class="benefits">
         <article class="benefit">
-          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?auto=format&fit=crop&w=700&q=70')"></div>
+          <div class="ph" style="background-image:url('images/chicha.jpg');background-size:contain;background-repeat:no-repeat;background-color:#E8ECEE"></div>
           <div class="tx">
             <h3 data-i18n="sa_cm_t">Chicha Morada</h3>
             <ul>
@@ -818,7 +825,11 @@ img[src^="images/"]{object-fit:contain!important;background:#E8ECEE}
       <button type="button" data-q="cm" data-i18n="ag_q1">Benefits of Chicha Morada</button>
       <button type="button" data-q="ma" data-i18n="ag_q2">Benefits of Maracuyá Juice</button>
     </div>
-    <a class="btn btn-wa ap-wa" data-wa href="https://wa.me/17807823341" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span data-i18n="ag_wa">Continue on WhatsApp</span></a>
+    <form class="ap-ask" id="agentForm" autocomplete="off">
+      <label class="sr-only" for="agentInput" data-i18n="ag_ph">Type your question…</label>
+      <input id="agentInput" maxlength="200" data-i18n-ph="ag_ph" placeholder="Type your question…">
+      <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button>
+    </form>
     <p class="ap-note" data-i18n="ag_note">General information only — not medical advice.</p>
   </div>
   <button type="button" class="fab agent-fab" id="agentFab" aria-expanded="false" aria-controls="agentPanel">
@@ -851,7 +862,7 @@ en:{
  sa_cm_t:"Chicha Morada",sa_cm_1:"Traditional Peruvian drink made from purple corn (maíz morado)",sa_cm_2:"Purple corn is naturally rich in anthocyanins — the antioxidant pigments that give it its deep colour",sa_cm_3:"Prepared with pineapple, cinnamon and clove",
  sa_ma_t:"Maracuyá Juice",sa_ma_1:"Made from passion fruit, a native South American fruit",sa_ma_2:"Contains vitamin C, vitamin A and potassium",sa_ma_3:"Naturally tangy, tropical and refreshing",
  sa_disc:"This information is for general education only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any disease.",
- wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Mishki's AI assistant for juices and South American natural fruit. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"Sarita is an AI assistant. Answers are general information, not medical advice.",ag_more:"Want to know more? Write to me on WhatsApp!",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
+ wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Mishki's AI assistant for juices and South American natural fruit. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"Sarita is an AI assistant. Answers are general information, not medical advice.",ag_more:"Ask me anything else below 👇",ag_ph:"Type your question…",kb_menu:"Right now we serve <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b>. Smoothies, bowls, empanadas and more are coming soon!",kb_vegan:"Both our <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b> are vegan, dairy-free and gluten-friendly.",kb_size:"Our <b>Maracuyá Juice</b> comes in a <b>9 oz</b> cup.",kb_loc:"We're in <b>Edmonton, Alberta</b>. Our exact address and opening hours are coming soon!",kb_price:"Our prices will be announced soon. Stay tuned!",kb_hi:"Hi there! 😊 Ask me about our juices, chicha morada or maracuyá.",kb_thanks:"You're welcome! Enjoy your juice 🍹",kb_fallback:"Good question! I don't have that answer here yet. For anything else, tap the green WhatsApp button next to me and our team will help you.",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
  promo:"Fresh pressed in Edmonton, every day 🍊",
  nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_loyalty:"Loyalty",nav_gift:"Gift Cards",nav_contact:"Contact Us",
  intranet:"Intranet",intranet_login:"Staff Intranet Login",
@@ -888,7 +899,7 @@ es:{
  sa_cm_t:"Chicha Morada",sa_cm_1:"Bebida tradicional peruana hecha de maíz morado",sa_cm_2:"El maíz morado es naturalmente rico en antocianinas, los pigmentos antioxidantes que le dan su color intenso",sa_cm_3:"Preparada con piña, canela y clavo de olor",
  sa_ma_t:"Jugo de Maracuyá",sa_ma_1:"Hecho de maracuyá, una fruta nativa de Sudamérica",sa_ma_2:"Contiene vitamina C, vitamina A y potasio",sa_ma_3:"Naturalmente ácido, tropical y refrescante",
  sa_disc:"Esta información es solo educativa. No es consejo médico y no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad.",
- wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 la asistente con IA de Mishki, especialista en jugos y frutas naturales de Sudamérica. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Sarita es una asistente con IA. Sus respuestas son información general, no consejo médico.",ag_more:"¿Quieres saber más? ¡Escríbeme por WhatsApp!",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
+ wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 la asistente con IA de Mishki, especialista en jugos y frutas naturales de Sudamérica. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Sarita es una asistente con IA. Sus respuestas son información general, no consejo médico.",ag_more:"Pregúntame lo que quieras aquí abajo 👇",ag_ph:"Escribe tu pregunta…",kb_menu:"Por ahora tenemos <b>Jugo de Maracuyá</b> y <b>Jugo de Chicha Morada</b>. ¡Batidos, bowls, empanadas y más muy pronto!",kb_vegan:"Nuestro <b>Jugo de Maracuyá</b> y nuestro <b>Jugo de Chicha Morada</b> son veganos, sin lácteos y sin gluten.",kb_size:"Nuestro <b>Jugo de Maracuyá</b> viene en vaso de <b>9 oz</b>.",kb_loc:"Estamos en <b>Edmonton, Alberta</b>. ¡La dirección exacta y el horario se anunciarán pronto!",kb_price:"Los precios se anunciarán muy pronto. ¡Atento!",kb_hi:"¡Hola! 😊 Pregúntame sobre nuestros jugos, la chicha morada o el maracuyá.",kb_thanks:"¡De nada! Disfruta tu jugo 🍹",kb_fallback:"¡Buena pregunta! Todavía no tengo esa respuesta aquí. Para cualquier otra consulta, toca el botón verde de WhatsApp a mi lado y nuestro equipo te ayudará.",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
  promo:"Recién exprimido en Edmonton, todos los días 🍊",
  nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_loyalty:"Recompensas",nav_gift:"Tarjetas de Regalo",nav_contact:"Contáctanos",
  intranet:"Intranet",intranet_login:"Acceso Intranet Personal",
@@ -938,7 +949,7 @@ const P=[
  {img:"1662130187270-a4d52c700eb6",cat:"protein",c:["#AF9A92","#FFE9C9"],tags:["veg","prot","post","energy"],en:["Lúcuma Muscle","Lúcuma, banana, dates, milk, maca and protein.","Lúcuma|Banana|Dates|Milk|Maca|Whey protein"],es:["Lúcuma Muscle","Lúcuma, plátano, dátiles, leche, maca y proteína.","Lúcuma|Plátano|Dátiles|Leche|Maca|Proteína whey"]},
  {img:"1600271886742-f049cd451bba",cat:"juices",c:["#F8A34C","#FFDBA6"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
  {img:"1628751584748-0d780bad3f06",cat:"juices",c:["#6DA470","#D6EAC0"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
- {img:"1615478503562-ec2d8aa0e24e",active:true,cat:"juices",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Juice","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Jugo de Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
+ {img:"images/chicha.jpg",active:true,cat:"juices",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Juice","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Jugo de Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
  {img:"images/maracuya.jpg",active:true,cat:"juices",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Juice","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Jugo de Maracuyá","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
  {img:"1627308594190-a057cd4bfac8",cat:"bowls",c:["#975FB8","#CABAE6"],tags:["vegan","df","energy"],en:["Açaí Classic Bowl","Açaí, banana and berries topped with granola and coconut.","Açaí|Banana|Berries|Granola|Coconut"],es:["Bowl Clásico de Açaí","Açaí, plátano y frutos rojos con granola y coco.","Açaí|Plátano|Frutos rojos|Granola|Coco"]},
  {img:"1621797350488-fb28c9217e3b",cat:"bowls",c:["#EE854C","#FFE9C9"],tags:["veg","energy"],en:["Lúcuma Dream Bowl","Lúcuma, banana and yogurt topped with quinoa pops and honey.","Lúcuma|Banana|Yogurt|Puffed quinoa|Honey"],es:["Bowl Sueño de Lúcuma","Lúcuma, plátano y yogur con quinua pop y miel.","Lúcuma|Plátano|Yogur|Quinua pop|Miel"]},
@@ -957,9 +968,10 @@ let lang = store.get("mishki_lang")==="es" ? "es" : "en";
 let activeCat = null; const activeFilters = new Set();
 const t = k => (I18N[lang][k] ?? I18N.en[k] ?? k);
 
-const ph=(id,w)=>id.startsWith("images/")?id:`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
-const catImg=id=>(P.find(p=>p.cat===id&&p.active)||P.find(p=>p.cat===id)||{img:"1615478503562-ec2d8aa0e24e"}).img;
-const ORDER=["images/maracuya.jpg","1615478503562-ec2d8aa0e24e"];
+const ph=(id,w)=>(id.startsWith("images/")||id.startsWith("http"))?id:`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+const CAT_IMG={juices:"images/maracuya.jpg"};
+const catImg=id=>CAT_IMG[id]||(P.find(p=>p.cat===id&&p.active)||P.find(p=>p.cat===id)||{img:"images/chicha.jpg"}).img;
+const ORDER=["images/maracuya.jpg","images/chicha.jpg"];
 const rank=p=>p.active?ORDER.indexOf(p.img):(p.cat==="juices"?10:20);
 function cupSVG(c){return `<svg viewBox="0 0 120 160" aria-hidden="true"><path d="M28 34h64l-8 112a8 8 0 0 1-8 7H44a8 8 0 0 1-8-7z" fill="#fff"/><path d="M33 56h54l-6 86a6 6 0 0 1-6 5H45a6 6 0 0 1-6-5z" fill="${c[0]}"/><path d="M33 56h54l-1.5 18h-51z" fill="${c[1]}"/><rect x="20" y="26" width="80" height="12" rx="6" fill="#fff"/><path d="M70 28l14-26" stroke="#6CB33F" stroke-width="6" stroke-linecap="round"/></svg>`}
 
@@ -992,7 +1004,7 @@ function renderProducts(){
   $("#products").innerHTML = list.length ? list.map(p=>`
     <button class="card${!p.active?" future":""}" type="button" data-p="${p.i}">
       <div class="pic" style="background:linear-gradient(160deg,${p.c[1]}55,${p.c[1]}22)">
-        <div class="tags">${!p.active?`<span class="tag future">${t("future")}</span>`:""}${p.tags.slice(0,2).map(x=>`<span class="tag">${t("f_"+x)}</span>`).join("")}</div><img src="${ph(p.img,600)}" alt="${p[lang][0]}" loading="lazy">
+        <div class="tags">${!p.active?`<span class="tag future">${t("future")}</span>`:""}${p.tags.slice(0,2).map(x=>`<span class="tag">${t("f_"+x)}</span>`).join("")}</div><img src="${ph(p.img,600)}" alt="${p[lang][0]}" loading="lazy">${p.ov?`<img class="ov" src="${p.ov}" alt="" aria-hidden="true">`:""}
       </div>
       <div class="body"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p></div>
     </button>`).join("") : `<p class="empty">${activeCat&&activeCat!=="juices"&&!activeFilters.size?t("future")+" 🍹":t("empty")}</p>`;
@@ -1013,16 +1025,38 @@ function closeAgent(){if(agentPanel.hidden)return;agentPanel.hidden=true;agentFa
 window.agentReady=true;
 agentFab.onclick=()=>agentPanel.hidden?openAgent():closeAgent();
 $("#agentClose").onclick=closeAgent;
-$$(".ap-qs button").forEach(b=>b.onclick=()=>{
-  const k=b.dataset.q, title=t(k==="cm"?"sa_cm_t":"sa_ma_t");
-  agentBody.insertAdjacentHTML("beforeend",`<div class="bub me">${b.textContent}</div><div class="bub"><b>${title}</b><ul>${[1,2,3].map(i=>`<li>${t("sa_"+k+"_"+i)}</li>`).join("")}</ul>${t("ag_more")}</div>`);
+const norm=x=>x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const KB=[
+ ["cm",["chicha","morada","purple corn","maiz morado","antocian","anthocyan"]],
+ ["ma",["maracuy","passion","parchita"]],
+ ["vegan",["vegan","dairy","lacteo","leche","milk","gluten","lactose","lactosa"]],
+ ["size",["size","tamano","oz","onza","ounce","ml","cup","vaso"]],
+ ["price",["price","precio","cost","cuesta","cuanto","how much"]],
+ ["loc",["where","donde","location","ubicac","address","direcc","hour","horario","open","abren","abierto"]],
+ ["menu",["menu","juices","jugos","drinks","bebidas","available","disponible","smoothie","batido","bowl","empanada","sandwich","wrap","snack"]],
+ ["thanks",["thank","gracias"]],
+ ["hi",["hello","hola","hi ","hey","buenas","buenos"]]
+];
+function answer(k){
+  if(k==="cm"||k==="ma"){const title=t(k==="cm"?"sa_cm_t":"sa_ma_t");return `<b>${title}</b><ul>${[1,2,3].map(i=>`<li>${t("sa_"+k+"_"+i)}</li>`).join("")}</ul>${t("ag_more")}`}
+  return t("kb_"+k);
+}
+function classify(q){const n=" "+norm(q)+" ";for(const [k,words] of KB){if(words.some(w=>n.includes(w)))return k}return "fallback"}
+const esc=x=>x.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function ask(text,key){
+  agentBody.insertAdjacentHTML("beforeend",`<div class="bub me">${esc(text)}</div><div class="bub typing">•••</div>`);
   agentBody.scrollTop=agentBody.scrollHeight;
-});
+  const k=key||classify(text);
+  setTimeout(()=>{const tb=agentBody.querySelector(".typing");if(tb){tb.classList.remove("typing");tb.innerHTML=answer(k)}agentBody.scrollTop=agentBody.scrollHeight},550);
+}
+$$(".ap-qs button").forEach(b=>b.onclick=()=>ask(b.textContent,b.dataset.q));
+$("#agentForm").addEventListener("submit",e=>{e.preventDefault();const i=$("#agentInput"),v=i.value.trim();if(!v)return;i.value="";ask(v)});
+
 
 function openProduct(i){
   const p=P[i], d=p[lang];
   $("#pdPic").style.background=`linear-gradient(160deg,${p.c[1]}66,${p.c[1]}22)`;
-  $("#pdPic").innerHTML=`<img src="${ph(p.img,900)}" alt="${d[0]}">`;
+  $("#pdPic").innerHTML=`<img src="${ph(p.img,900)}" alt="${d[0]}">${p.ov?`<img class="ov" src="${p.ov}" alt="" aria-hidden="true">`:""}`;
   $("#pdTitle").textContent=d[0]; $("#pdDesc").textContent=d[1];
   $("#pdIng").innerHTML=d[2].split("|").map(x=>`<span>${x}</span>`).join("");
   $("#pdTags").innerHTML=(!p.active?`<span class="tag future">${t("future")}</span>`:"")+p.tags.map(x=>`<span>✓ ${t("f_"+x)}</span>`).join("");
@@ -1045,13 +1079,12 @@ window.addEventListener("resize",()=>{if(innerWidth>1024)closeDrawer()});
 (function(){
   const track=$(".slides"), slides=$$(".slide"), dots=$(".dots"); let i=0, timer;
   dots.innerHTML=slides.map((_,k)=>`<button type="button" aria-label="Slide ${k+1}"></button>`).join("");
-  const go=n=>{i=(n+slides.length)%slides.length;track.style.transform=`translateX(-${i*100}%)`;$$("button",dots).forEach((d,k)=>d.setAttribute("aria-current",k===i))};
-  const play=()=>{clearInterval(timer);timer=setInterval(()=>go(i+1),6000)};
+  const go=n=>{i=(n+slides.length)%slides.length;slides.forEach((sl,k)=>{sl.classList.toggle("active",k===i);sl.setAttribute("aria-hidden",k!==i)});$$("button",dots).forEach((d,k)=>d.setAttribute("aria-current",k===i))};
+  const play=()=>{clearInterval(timer);timer=setInterval(()=>go(i+1),7000)};
   $$("button",dots).forEach((d,k)=>d.onclick=()=>{go(k);play()});
   $(".hero .prev").onclick=()=>{go(i-1);play()}; $(".hero .next").onclick=()=>{go(i+1);play()};
   let x0=null; track.addEventListener("touchstart",e=>x0=e.touches[0].clientX,{passive:true});
   track.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));play()}x0=null});
-  $(".hero").addEventListener("mouseenter",()=>clearInterval(timer)); $(".hero").addEventListener("mouseleave",play);
   go(0); play();
 })();
 $$("[data-cat-link]").forEach(a=>a.addEventListener("click",()=>{activeCat=a.dataset.catLink;renderCats();renderProducts()}));
