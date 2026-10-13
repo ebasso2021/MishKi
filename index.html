@@ -12,20 +12,20 @@
 <style>
 /* ================= BRAND TOKENS (edit here) ================= */
 :root{
-  --green:#6CB33F;      /* primary fresh green */
-  --green-dk:#3E7D1E;
-  --orange:#F58220;     /* juicy orange accent */
-  --orange-dk:#D9650A;
-  --yellow:#FFC72C;
-  --berry:#C2185B;
-  --purple:#6A2C91;
-  --ink:#2B2B2B;
+  --green:#8DBF72;      /* primary fresh green */
+  --green-dk:#557F45;
+  --orange:#F2A774;     /* juicy orange accent */
+  --orange-dk:#E3925C;
+  --yellow:#F5D88A;
+  --berry:#D894AC;
+  --purple:#A48BBE;
+  --ink:#3B4238;
   --muted:#6b6b6b;
   --bg:#ffffff;
-  --soft:#F6F8F2;
-  --line:#e7eadf;
+  --soft:#F9F6EF;
+  --line:#ece7dc;
   --radius:18px;
-  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --shadow:0 10px 30px rgba(60,50,30,.07);
   --head:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --body:'Open Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --maxw:1240px;
@@ -42,16 +42,16 @@ h1,h2,h3,h4{font-family:var(--head);line-height:1.15;font-weight:800}
 .upper{text-transform:uppercase;letter-spacing:.06em}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;padding:14px 28px;border-radius:999px;transition:transform .2s,background .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 18px rgba(245,130,32,.35)}
+.btn-orange{background:var(--orange);color:#3B2A1C;box-shadow:0 6px 18px rgba(242,167,116,.35)}
 .btn-orange:hover{background:var(--orange-dk)}
-.btn-green{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(108,179,63,.35)}
-.btn-green:hover{background:var(--green-dk)}
+.btn-green{background:var(--green-dk);color:#fff;box-shadow:0 6px 18px rgba(85,127,69,.3)}
+.btn-green:hover{background:#476B39}
 .btn-ghost{border:2px solid currentColor}
 :focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* ================= TOP BAR ================= */
-.topbar{background:var(--green);color:#fff;font-size:.82rem}
+.topbar{background:var(--green-dk);color:#fff;font-size:.82rem}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:38px;gap:12px}
 .topbar a{font-weight:600}
 .topbar .promo{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -71,7 +71,7 @@ nav.main a:hover::after{width:100%}
 /* language switch */
 .lang-switch{display:inline-flex;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px;position:relative}
 .lang-switch button{position:relative;z-index:1;font-family:var(--head);font-weight:800;font-size:.75rem;padding:6px 12px;border-radius:999px;color:var(--muted);transition:color .2s}
-.lang-switch button[aria-pressed="true"]{color:#fff}
+.lang-switch button[aria-pressed="true"]{color:#3B2A1C}
 .lang-switch .knob{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:var(--orange);border-radius:999px;transition:transform .25s}
 .lang-switch[data-lang="es"] .knob{transform:translateX(100%)}
 .topbar .lang-switch{background:rgba(255,255,255,.18);border-color:transparent}
@@ -87,7 +87,7 @@ nav.main a:hover::after{width:100%}
 /* slide-out menu (mobile, like the reference site) */
 .drawer{position:fixed;inset:0;z-index:100;pointer-events:none}
 .drawer .scrim{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .3s}
-.drawer .panel{position:absolute;top:0;right:0;height:100%;width:min(360px,88vw);background:var(--green);color:#fff;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding:24px;overflow-y:auto}
+.drawer .panel{position:absolute;top:0;right:0;height:100%;width:min(360px,88vw);background:var(--green-dk);color:#fff;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding:24px;overflow-y:auto}
 .drawer.open{pointer-events:auto}
 .drawer.open .scrim{opacity:1}
 .drawer.open .panel{transform:none}
@@ -104,17 +104,17 @@ nav.main a:hover::after{width:100%}
 .slide .wrap{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:32px;width:100%;padding-top:40px;padding-bottom:60px}
 .slide h1,.slide h2{font-size:clamp(2.1rem,5.4vw,4.2rem);font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
 .slide p{font-size:clamp(1rem,1.6vw,1.2rem);margin:16px 0 28px;max-width:520px}
-.slide .eyebrow{display:inline-block;font-family:var(--head);font-weight:800;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.25);margin-bottom:16px}
-.s1{background:linear-gradient(120deg,#F58220 0%,#FFB347 60%,#FFC72C 100%);color:#fff}
-.s2{background:linear-gradient(120deg,#3E7D1E 0%,#6CB33F 60%,#A8D86E 100%);color:#fff}
-.s3{background:linear-gradient(120deg,#6A2C91 0%,#C2185B 70%,#F06292 100%);color:#fff}
+.slide .eyebrow{display:inline-block;font-family:var(--head);font-weight:800;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.6);margin-bottom:16px}
+.s1{background:linear-gradient(120deg,#F6C4A0 0%,#F9D9B5 55%,#F8E7B0 100%);color:#3B2A1C}
+.s2{background:linear-gradient(120deg,#BCD9AA 0%,#D3E6C3 60%,#E7F1DA 100%);color:#2F4426}
+.s3{background:linear-gradient(120deg,#D7C8E6 0%,#EBCBD7 65%,#F6DCE4 100%);color:#3E2C4A}
 .hero-art{justify-self:center;width:min(420px,80%);filter:drop-shadow(0 25px 40px rgba(0,0,0,.25));animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-14px) rotate(-2deg)}}
 .hero .ctrl{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--ink);font-size:1.4rem;box-shadow:var(--shadow);z-index:2}
 .hero .prev{left:16px}.hero .next{right:16px}
 .dots{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:2}
-.dots button{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.55);transition:.25s}
-.dots button[aria-current="true"]{background:#fff;width:32px;border-radius:8px}
+.dots button{width:12px;height:12px;border-radius:50%;background:rgba(59,66,56,.25);transition:.25s}
+.dots button[aria-current="true"]{background:var(--green-dk);width:32px;border-radius:8px}
 
 /* ================= SECTIONS ================= */
 section{padding:clamp(56px,8vw,96px) 0}
@@ -160,15 +160,15 @@ section{padding:clamp(56px,8vw,96px) 0}
 .list-check li::before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:.75rem;display:grid;place-items:center}
 
 /* loyalty band */
-.band{background:var(--orange);color:#fff;position:relative;overflow:hidden}
+.band{background:#FBE6D4;color:#3B2A1C;position:relative;overflow:hidden}
 .band .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
 .band h2{font-size:clamp(1.8rem,3.6vw,2.8rem);text-transform:uppercase}
 .band p{opacity:.95;margin:12px 0 24px;max-width:560px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
-.step{background:rgba(255,255,255,.15);border-radius:16px;padding:16px;text-align:center}
+.step{background:rgba(255,255,255,.65);border-radius:16px;padding:16px;text-align:center}
 .step b{display:block;font-family:var(--head);font-size:1.8rem}
 .step span{font-size:.82rem}
-.card-mock{aspect-ratio:1.6/1;border-radius:22px;background:linear-gradient(135deg,#fff 0%,#FFF3E6 100%);color:var(--ink);padding:24px;box-shadow:0 30px 60px rgba(0,0,0,.25);transform:rotate(-6deg);display:flex;flex-direction:column;justify-content:space-between;max-width:380px;justify-self:center;width:100%}
+.card-mock{aspect-ratio:1.6/1;border-radius:22px;background:linear-gradient(135deg,#fff 0%,#FFF8F0 100%);color:var(--ink);padding:24px;box-shadow:0 24px 50px rgba(60,40,20,.15);transform:rotate(-6deg);display:flex;flex-direction:column;justify-content:space-between;max-width:380px;justify-self:center;width:100%}
 .card-mock .logo{font-size:1.4rem}
 .card-mock .num{font-family:monospace;letter-spacing:.2em;color:var(--muted)}
 
@@ -188,10 +188,10 @@ section{padding:clamp(56px,8vw,96px) 0}
 .map iframe{width:100%;height:100%;min-height:320px;border:0}
 
 /* newsletter */
-.news{background:var(--green);color:#fff;text-align:center}
+.news{background:#E3EFD9;color:#2F4426;text-align:center}
 .news h2{font-size:clamp(1.6rem,3.2vw,2.4rem);text-transform:uppercase}
 .news form{display:flex;gap:12px;max-width:760px;margin:24px auto 0;flex-wrap:wrap;justify-content:center}
-.news input{flex:1 1 220px;padding:15px 20px;border-radius:999px;border:0;font-size:1rem;min-width:0}
+.news input{flex:1 1 220px;padding:15px 20px;border-radius:999px;border:2px solid #cfe0c2;font-size:1rem;min-width:0}
 .news .ok{margin-top:14px;font-weight:700;min-height:1.6em}
 
 /* contact */
@@ -333,7 +333,7 @@ footer .logo{color:#fff}
 <header class="site">
   <div class="wrap">
     <a href="#top" class="logo" aria-label="Mishki Juice Bar home">
-      <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="36" r="24" fill="#F58220"/><circle cx="32" cy="36" r="17" fill="#FFC72C"/><path d="M32 22v28M18 36h28M22 26l20 20M42 26L22 46" stroke="#F58220" stroke-width="2.5" stroke-linecap="round"/><path d="M33 12c6-8 16-6 18-4-4 6-12 8-18 4z" fill="#6CB33F"/></svg>
+      <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="36" r="24" fill="#F2A774"/><circle cx="32" cy="36" r="17" fill="#F5D88A"/><path d="M32 22v28M18 36h28M22 26l20 20M42 26L22 46" stroke="#F2A774" stroke-width="2.5" stroke-linecap="round"/><path d="M33 12c6-8 16-6 18-4-4 6-12 8-18 4z" fill="#8DBF72"/></svg>
       <span>Mishki<span class="dot">.</span><small>JUICE BAR</small></span>
     </a>
     <nav class="main" aria-label="Main">
@@ -398,7 +398,7 @@ footer .logo{color:#fff}
           <p data-i18n="h1_text">Delicious smoothies, fresh pressed juices &amp; good food for people on the go — inspired by Andean superfruits.</p>
           <a href="#menu" class="btn btn-green" data-i18n="cta_menu">Discover our menu</a>
         </div>
-        <svg class="hero-art" viewBox="0 0 200 260" aria-hidden="true"><path d="M50 60h100l-12 180a12 12 0 0 1-12 11H74a12 12 0 0 1-12-11z" fill="#fff" opacity=".95"/><path d="M58 95h84l-9 140a8 8 0 0 1-8 7H75a8 8 0 0 1-8-7z" fill="#F58220"/><path d="M58 95h84l-2 25H60z" fill="#FFC72C"/><rect x="40" y="48" width="120" height="16" rx="8" fill="#fff"/><path d="M118 52l22-50" stroke="#6CB33F" stroke-width="9" stroke-linecap="round"/><circle cx="160" cy="70" r="26" fill="#FFC72C"/><circle cx="160" cy="70" r="18" fill="#FFE08A"/></svg>
+        <svg class="hero-art" viewBox="0 0 200 260" aria-hidden="true"><path d="M50 60h100l-12 180a12 12 0 0 1-12 11H74a12 12 0 0 1-12-11z" fill="#fff" opacity=".95"/><path d="M58 95h84l-9 140a8 8 0 0 1-8 7H75a8 8 0 0 1-8-7z" fill="#F8A863"/><path d="M58 95h84l-2 25H60z" fill="#FFD86B"/><rect x="40" y="48" width="120" height="16" rx="8" fill="#fff"/><path d="M118 52l22-50" stroke="#98CA79" stroke-width="9" stroke-linecap="round"/><circle cx="160" cy="70" r="26" fill="#FFD86B"/><circle cx="160" cy="70" r="18" fill="#FFE9AD"/></svg>
       </div>
     </div>
     <div class="slide s2" role="group" aria-roledescription="slide" aria-label="2 / 3">
@@ -409,7 +409,7 @@ footer .logo{color:#fff}
           <p data-i18n="h2_text">Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.</p>
           <a href="#menu" class="btn btn-orange" data-i18n="cta_juices" data-cat-link="juices">See fresh juices</a>
         </div>
-        <svg class="hero-art" viewBox="0 0 200 260" aria-hidden="true"><rect x="62" y="40" width="76" height="210" rx="18" fill="#fff" opacity=".95"/><rect x="70" y="80" width="60" height="160" rx="12" fill="#3E7D1E"/><rect x="72" y="18" width="56" height="26" rx="6" fill="#F58220"/><path d="M70 150c20-14 40 14 60 0v90H70z" fill="#A8D86E"/><path d="M30 200c-14-30 6-60 34-62-2 30-12 52-34 62z" fill="#A8D86E"/><path d="M170 120c14-26-2-52-26-56 0 26 8 46 26 56z" fill="#fff" opacity=".7"/></svg>
+        <svg class="hero-art" viewBox="0 0 200 260" aria-hidden="true"><rect x="62" y="40" width="76" height="210" rx="18" fill="#fff" opacity=".95"/><rect x="70" y="80" width="60" height="160" rx="12" fill="#78A462"/><rect x="72" y="18" width="56" height="26" rx="6" fill="#F8A863"/><path d="M70 150c20-14 40 14 60 0v90H70z" fill="#C2E49A"/><path d="M30 200c-14-30 6-60 34-62-2 30-12 52-34 62z" fill="#C2E49A"/><path d="M170 120c14-26-2-52-26-56 0 26 8 46 26 56z" fill="#fff" opacity=".7"/></svg>
       </div>
     </div>
     <div class="slide s3" role="group" aria-roledescription="slide" aria-label="3 / 3">
@@ -420,7 +420,7 @@ footer .logo{color:#fff}
           <p data-i18n="h3_text">Join our loyalty program and collect points on every smoothie, juice and bowl.</p>
           <a href="#loyalty" class="btn btn-orange" data-i18n="cta_join">Join now</a>
         </div>
-        <svg class="hero-art" viewBox="0 0 220 220" aria-hidden="true"><ellipse cx="110" cy="150" rx="96" ry="22" fill="#fff" opacity=".95"/><path d="M14 150a96 60 0 0 0 192 0z" fill="#fff" opacity=".95"/><circle cx="70" cy="135" r="20" fill="#6A2C91"/><circle cx="100" cy="125" r="16" fill="#F06292"/><circle cx="135" cy="132" r="20" fill="#FFC72C"/><circle cx="160" cy="140" r="12" fill="#6CB33F"/><circle cx="88" cy="145" r="10" fill="#C2185B"/><path d="M120 60l-10-40" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>
+        <svg class="hero-art" viewBox="0 0 220 220" aria-hidden="true"><ellipse cx="110" cy="150" rx="96" ry="22" fill="#fff" opacity=".95"/><path d="M14 150a96 60 0 0 0 192 0z" fill="#fff" opacity=".95"/><circle cx="70" cy="135" r="20" fill="#976BB2"/><circle cx="100" cy="125" r="16" fill="#F491B3"/><circle cx="135" cy="132" r="20" fill="#FFD86B"/><circle cx="160" cy="140" r="12" fill="#98CA79"/><circle cx="88" cy="145" r="10" fill="#D45D8C"/><path d="M120 60l-10-40" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>
       </div>
     </div>
   </div>
@@ -458,8 +458,8 @@ footer .logo{color:#fff}
       </ul>
       <a href="#menu" class="btn btn-green" data-i18n="cta_menu">Discover our menu</a>
     </div>
-    <div class="art" style="background:linear-gradient(135deg,#FFC72C,#F58220)">
-      <svg viewBox="0 0 300 300" width="80%" aria-hidden="true"><circle cx="150" cy="150" r="120" fill="#fff" opacity=".25"/><circle cx="110" cy="130" r="55" fill="#6A2C91"/><circle cx="110" cy="130" r="40" fill="#8E44AD"/><circle cx="190" cy="170" r="60" fill="#FFC72C"/><circle cx="190" cy="170" r="44" fill="#FFE08A"/><g fill="#3E2723"><circle cx="180" cy="160" r="4"/><circle cx="200" cy="165" r="4"/><circle cx="190" cy="180" r="4"/><circle cx="175" cy="178" r="4"/><circle cx="205" cy="183" r="4"/></g><path d="M150 70c10-30 40-34 52-30-10 22-32 34-52 30z" fill="#6CB33F"/></svg>
+    <div class="art" style="background:linear-gradient(135deg,#FFD86B,#F8A863)">
+      <svg viewBox="0 0 300 300" width="80%" aria-hidden="true"><circle cx="150" cy="150" r="120" fill="#fff" opacity=".25"/><circle cx="110" cy="130" r="55" fill="#976BB2"/><circle cx="110" cy="130" r="40" fill="#B07CC6"/><circle cx="190" cy="170" r="60" fill="#FFD86B"/><circle cx="190" cy="170" r="44" fill="#FFE9AD"/><g fill="#786865"><circle cx="180" cy="160" r="4"/><circle cx="200" cy="165" r="4"/><circle cx="190" cy="180" r="4"/><circle cx="175" cy="178" r="4"/><circle cx="205" cy="183" r="4"/></g><path d="M150 70c10-30 40-34 52-30-10 22-32 34-52 30z" fill="#98CA79"/></svg>
     </div>
   </div>
 </section>
@@ -492,9 +492,9 @@ footer .logo{color:#fff}
       <p data-i18n="gift_sub">The perfect gift for every occasion. Available in store.</p>
     </div>
     <div class="gifts reveal">
-      <div class="gift" style="background:linear-gradient(135deg,#F58220,#FFC72C)"><h3 data-i18n="gift_1">Thank you!</h3><span class="logo" style="color:#fff">Mishki.</span></div>
-      <div class="gift" style="background:linear-gradient(135deg,#3E7D1E,#6CB33F)"><h3 data-i18n="gift_2">Happy Birthday!</h3><span class="logo" style="color:#fff">Mishki.</span></div>
-      <div class="gift" style="background:linear-gradient(135deg,#6A2C91,#C2185B)"><h3 data-i18n="gift_3">Stay Fresh!</h3><span class="logo" style="color:#fff">Mishki.</span></div>
+      <div class="gift" style="background:linear-gradient(135deg,#F2B48A,#F5D88A);color:#3B2A1C"><h3 data-i18n="gift_1">Thank you!</h3><span class="logo" style="color:inherit">Mishki.</span></div>
+      <div class="gift" style="background:linear-gradient(135deg,#9CC487,#C9E0B6);color:#2F4426"><h3 data-i18n="gift_2">Happy Birthday!</h3><span class="logo" style="color:inherit">Mishki.</span></div>
+      <div class="gift" style="background:linear-gradient(135deg,#B9A3D1,#E3B5C6);color:#3E2C4A"><h3 data-i18n="gift_3">Stay Fresh!</h3><span class="logo" style="color:inherit">Mishki.</span></div>
     </div>
   </div>
 </section>
@@ -748,22 +748,22 @@ const CATS=[
  {id:"snacks",ico:"🥟",bg:"#FFF8D6"},{id:"wraps",ico:"🌯",bg:"#E3F2FD"}];
 const FILTERS=["vegan","veg","prot","df","gf","imm","post","energy"];
 const P=[
- {cat:"essential",c:["#E53935","#FF8A80"],tags:["veg","gf"],en:["Strawberry Sunrise","Strawberry, banana, orange juice and yogurt.","Strawberry|Banana|Orange juice|Yogurt"],es:["Amanecer de Fresa","Fresa, plátano, jugo de naranja y yogur.","Fresa|Plátano|Jugo de naranja|Yogur"]},
- {cat:"essential",c:["#FB8C00","#FFD54F"],tags:["vegan","df","gf"],en:["Mango Tango","Mango, pineapple, passion fruit and apple juice.","Mango|Pineapple|Passion fruit|Apple juice"],es:["Mango Tango","Mango, piña, maracuyá y jugo de manzana.","Mango|Piña|Maracuyá|Jugo de manzana"]},
- {cat:"wellness",c:["#43A047","#AED581"],tags:["vegan","df","gf","imm"],en:["Green Detox","Spinach, kale, pineapple, cucumber, ginger and lime.","Spinach|Kale|Pineapple|Cucumber|Ginger|Lime"],es:["Detox Verde","Espinaca, kale, piña, pepino, jengibre y limón.","Espinaca|Kale|Piña|Pepino|Jengibre|Limón"]},
- {cat:"wellness",c:["#C62828","#F48FB1"],tags:["vegan","df","gf","imm"],en:["Camu Camu Boost","Camu camu, strawberry, mango and orange juice.","Camu camu|Strawberry|Mango|Orange juice"],es:["Camu Camu Boost","Camu camu, fresa, mango y jugo de naranja.","Camu camu|Fresa|Mango|Jugo de naranja"]},
- {cat:"protein",c:["#6D4C41","#D7CCC8"],tags:["veg","prot","post","gf"],en:["Peanut Power","Banana, peanut butter, cacao, oat milk and protein.","Banana|Peanut butter|Cacao|Oat milk|Whey protein"],es:["Poder de Maní","Plátano, mantequilla de maní, cacao, leche de avena y proteína.","Plátano|Mantequilla de maní|Cacao|Leche de avena|Proteína whey"]},
- {cat:"protein",c:["#8D6E63","#FFE0B2"],tags:["veg","prot","post","energy"],en:["Lúcuma Muscle","Lúcuma, banana, dates, milk, maca and protein.","Lúcuma|Banana|Dates|Milk|Maca|Whey protein"],es:["Lúcuma Muscle","Lúcuma, plátano, dátiles, leche, maca y proteína.","Lúcuma|Plátano|Dátiles|Leche|Maca|Proteína whey"]},
- {cat:"juices",c:["#F57C00","#FFCC80"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
- {cat:"juices",c:["#2E7D32","#C5E1A5"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
- {cat:"andean",c:["#4A148C","#CE93D8"],tags:["vegan","df","gf"],en:["Chicha Morada Cooler","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
- {cat:"andean",c:["#F9A825","#FFF59D"],tags:["vegan","df","gf","imm"],en:["Maracuyá Sour Splash","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Maracuyá Splash","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
- {cat:"bowls",c:["#6A1B9A","#B39DDB"],tags:["vegan","df","energy"],en:["Açaí Classic Bowl","Açaí, banana and berries topped with granola and coconut.","Açaí|Banana|Berries|Granola|Coconut"],es:["Bowl Clásico de Açaí","Açaí, plátano y frutos rojos con granola y coco.","Açaí|Plátano|Frutos rojos|Granola|Coco"]},
- {cat:"bowls",c:["#E65100","#FFE0B2"],tags:["veg","energy"],en:["Lúcuma Dream Bowl","Lúcuma, banana and yogurt topped with quinoa pops and honey.","Lúcuma|Banana|Yogurt|Puffed quinoa|Honey"],es:["Bowl Sueño de Lúcuma","Lúcuma, plátano y yogur con quinua pop y miel.","Lúcuma|Plátano|Yogur|Quinua pop|Miel"]},
- {cat:"snacks",c:["#BF8040","#FFE0A3"],tags:["veg"],en:["Cheese Empanada","Golden baked empanada filled with melted cheese.","Wheat dough|Cheese|Butter"],es:["Empanada de Queso","Empanada horneada rellena de queso derretido.","Masa de trigo|Queso|Mantequilla"]},
- {cat:"snacks",c:["#8D6E63","#FFE0B2"],tags:["prot"],en:["Beef Empanada","Baked empanada with seasoned beef, onion and olive.","Wheat dough|Beef|Onion|Olive|Egg"],es:["Empanada de Carne","Empanada horneada con carne sazonada, cebolla y aceituna.","Masa de trigo|Carne|Cebolla|Aceituna|Huevo"]},
- {cat:"wraps",c:["#558B2F","#DCEDC8"],tags:["veg","prot"],en:["Quinoa Veggie Wrap","Quinoa, hummus, greens, tomato and avocado.","Tortilla|Quinoa|Hummus|Greens|Tomato|Avocado"],es:["Wrap Vegetal de Quinua","Quinua, hummus, hojas verdes, tomate y palta.","Tortilla|Quinua|Hummus|Hojas verdes|Tomate|Palta"]},
- {cat:"wraps",c:["#D84315","#FFCCBC"],tags:["prot","post"],en:["Chicken Ají Sandwich","Grilled chicken with ají amarillo mayo and lettuce.","Bread|Grilled chicken|Ají amarillo mayo|Lettuce|Tomato"],es:["Sándwich de Pollo al Ají","Pollo a la plancha con mayonesa de ají amarillo y lechuga.","Pan|Pollo a la plancha|Mayonesa de ají amarillo|Lechuga|Tomate"]}
+ {cat:"essential",c:["#ED7472","#FFADA6"],tags:["veg","gf"],en:["Strawberry Sunrise","Strawberry, banana, orange juice and yogurt.","Strawberry|Banana|Orange juice|Yogurt"],es:["Amanecer de Fresa","Fresa, plátano, jugo de naranja y yogur.","Fresa|Plátano|Jugo de naranja|Yogur"]},
+ {cat:"essential",c:["#FCAE4C","#FFE284"],tags:["vegan","df","gf"],en:["Mango Tango","Mango, pineapple, passion fruit and apple juice.","Mango|Pineapple|Passion fruit|Apple juice"],es:["Mango Tango","Mango, piña, maracuyá y jugo de manzana.","Mango|Piña|Maracuyá|Jugo de manzana"]},
+ {cat:"wellness",c:["#7BBC7E","#C6E2A7"],tags:["vegan","df","gf","imm"],en:["Green Detox","Spinach, kale, pineapple, cucumber, ginger and lime.","Spinach|Kale|Pineapple|Cucumber|Ginger|Lime"],es:["Detox Verde","Espinaca, kale, piña, pepino, jengibre y limón.","Espinaca|Kale|Piña|Pepino|Jengibre|Limón"]},
+ {cat:"wellness",c:["#D76868","#F7B1C8"],tags:["vegan","df","gf","imm"],en:["Camu Camu Boost","Camu camu, strawberry, mango and orange juice.","Camu camu|Strawberry|Mango|Orange juice"],es:["Camu Camu Boost","Camu camu, fresa, mango y jugo de naranja.","Camu camu|Fresa|Mango|Jugo de naranja"]},
+ {cat:"protein",c:["#99827A","#E3DBD8"],tags:["veg","prot","post","gf"],en:["Peanut Power","Banana, peanut butter, cacao, oat milk and protein.","Banana|Peanut butter|Cacao|Oat milk|Whey protein"],es:["Poder de Maní","Plátano, mantequilla de maní, cacao, leche de avena y proteína.","Plátano|Mantequilla de maní|Cacao|Leche de avena|Proteína whey"]},
+ {cat:"protein",c:["#AF9A92","#FFE9C9"],tags:["veg","prot","post","energy"],en:["Lúcuma Muscle","Lúcuma, banana, dates, milk, maca and protein.","Lúcuma|Banana|Dates|Milk|Maca|Whey protein"],es:["Lúcuma Muscle","Lúcuma, plátano, dátiles, leche, maca y proteína.","Lúcuma|Plátano|Dátiles|Leche|Maca|Proteína whey"]},
+ {cat:"juices",c:["#F8A34C","#FFDBA6"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
+ {cat:"juices",c:["#6DA470","#D6EAC0"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
+ {cat:"andean",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Cooler","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
+ {cat:"andean",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Sour Splash","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Maracuyá Splash","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
+ {cat:"bowls",c:["#975FB8","#CABAE6"],tags:["vegan","df","energy"],en:["Açaí Classic Bowl","Açaí, banana and berries topped with granola and coconut.","Açaí|Banana|Berries|Granola|Coconut"],es:["Bowl Clásico de Açaí","Açaí, plátano y frutos rojos con granola y coco.","Açaí|Plátano|Frutos rojos|Granola|Coco"]},
+ {cat:"bowls",c:["#EE854C","#FFE9C9"],tags:["veg","energy"],en:["Lúcuma Dream Bowl","Lúcuma, banana and yogurt topped with quinoa pops and honey.","Lúcuma|Banana|Yogurt|Puffed quinoa|Honey"],es:["Bowl Sueño de Lúcuma","Lúcuma, plátano y yogur con quinua pop y miel.","Lúcuma|Plátano|Yogur|Quinua pop|Miel"]},
+ {cat:"snacks",c:["#D2A679","#FFE9BF"],tags:["veg"],en:["Cheese Empanada","Golden baked empanada filled with melted cheese.","Wheat dough|Cheese|Butter"],es:["Empanada de Queso","Empanada horneada rellena de queso derretido.","Masa de trigo|Queso|Mantequilla"]},
+ {cat:"snacks",c:["#AF9A92","#FFE9C9"],tags:["prot"],en:["Beef Empanada","Baked empanada with seasoned beef, onion and olive.","Wheat dough|Beef|Onion|Olive|Egg"],es:["Empanada de Carne","Empanada horneada con carne sazonada, cebolla y aceituna.","Masa de trigo|Carne|Cebolla|Aceituna|Huevo"]},
+ {cat:"wraps",c:["#88AE6D","#E6F2D8"],tags:["veg","prot"],en:["Quinoa Veggie Wrap","Quinoa, hummus, greens, tomato and avocado.","Tortilla|Quinoa|Hummus|Greens|Tomato|Avocado"],es:["Wrap Vegetal de Quinua","Quinua, hummus, hojas verdes, tomate y palta.","Tortilla|Quinua|Hummus|Hojas verdes|Tomate|Palta"]},
+ {cat:"wraps",c:["#E47B5B","#FFDBD0"],tags:["prot","post"],en:["Chicken Ají Sandwich","Grilled chicken with ají amarillo mayo and lettuce.","Bread|Grilled chicken|Ají amarillo mayo|Lettuce|Tomato"],es:["Sándwich de Pollo al Ají","Pollo a la plancha con mayonesa de ají amarillo y lechuga.","Pan|Pollo a la plancha|Mayonesa de ají amarillo|Lechuga|Tomate"]}
 ];
 
 /* =====================================================================
