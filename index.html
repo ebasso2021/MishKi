@@ -802,11 +802,10 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
       <div class="field"><label for="lPass" data-i18n="l_pass">Password</label>
         <div class="pw-wrap"><input id="lPass" type="password" required autocomplete="current-password"><button type="button" id="togglePw" data-i18n="show">Show</button></div>
       </div>
-      <label class="remember"><input type="checkbox" id="lNewTab" checked> <span data-i18n="l_newtab">Open in a new tab</span></label>
       <div class="err" id="lErr" role="alert"></div>
       <button class="btn btn-green" type="submit" data-i18n="l_btn">Sign in</button>
     </form>
-    <p class="note" data-i18n="login_note">Authorized personnel only. You will be redirected to the restaurant-app repository on GitHub, where your GitHub account permissions apply.</p>
+    <p class="note" data-i18n="login_note">Authorized personnel only. After signing in, the restaurant app opens in a new tab.</p>
   </div>
 </div>
 
@@ -842,7 +841,7 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
 /* =====================================================================
    CONFIGURATION
    ===================================================================== */
-const INTRANET_URL = "https://github.com/ebasso2021/restaurant-app";
+const INTRANET_URL = "https://ebasso2021.github.io/restaurant-app/";
 /* Login credentials are stored as SHA-256 hashes (never plain text).
    Only account: user "administrator" (password stored as a SHA-256 hash).
    To create a new hash, open the browser console and run:
@@ -887,7 +886,7 @@ en:{
  terms:"Terms & Conditions",privacy:"Privacy Policy",access:"Accessibility Policy",
  ingredients:"Ingredients",benefits:"Benefits",find_store:"Find a store",also:"You may also like",
  login_title:"Staff Intranet",login_sub:"Sign in to access the Mishki restaurant management app.",l_user:"Username",l_pass:"Password",show:"Show",hide:"Hide",l_newtab:"Open in a new tab",l_btn:"Sign in",
- login_note:"Authorized personnel only. You will be redirected to the restaurant-app repository on GitHub, where your GitHub account permissions apply.",
+ login_note:"Authorized personnel only. After signing in, the restaurant app opens in a new tab.",l_open:"Open the restaurant app",l_blocked:"Your browser blocked the new tab.",
  l_err:"Invalid username or password.",l_ok:"Welcome! Redirecting to the intranet…",l_lock:"Too many attempts. Please wait 30 seconds.",
  cat_essential:"Essential Smoothies",cat_wellness:"Wellness Smoothies",cat_protein:"Protein Smoothies",cat_juices:"Fresh Juices",future:"Coming soon",cat_andean:"Andean Fusions",cat_bowls:"Smoothie Bowls",cat_snacks:"Snacks",cat_wraps:"Sandwiches & Wraps",
  f_vegan:"Vegan",f_veg:"Vegetarian",f_prot:"Protein",f_df:"Dairy Free",f_gf:"Gluten Friendly",f_imm:"Immunity",f_post:"Post-workout",f_energy:"Energy"
@@ -924,7 +923,7 @@ es:{
  terms:"Términos y Condiciones",privacy:"Política de Privacidad",access:"Política de Accesibilidad",
  ingredients:"Ingredientes",benefits:"Beneficios",find_store:"Buscar tienda",also:"También te puede gustar",
  login_title:"Intranet del Personal",login_sub:"Inicia sesión para acceder a la app de gestión del restaurante Mishki.",l_user:"Usuario",l_pass:"Contraseña",show:"Ver",hide:"Ocultar",l_newtab:"Abrir en una pestaña nueva",l_btn:"Iniciar sesión",
- login_note:"Solo personal autorizado. Serás redirigido al repositorio restaurant-app en GitHub, donde aplican los permisos de tu cuenta de GitHub.",
+ login_note:"Solo personal autorizado. Al iniciar sesión, la app del restaurante se abrirá en una pestaña nueva.",l_open:"Abrir la app del restaurante",l_blocked:"Tu navegador bloqueó la pestaña nueva.",
  l_err:"Usuario o contraseña incorrectos.",l_ok:"¡Bienvenido! Redirigiendo a la intranet…",l_lock:"Demasiados intentos. Espera 30 segundos.",
  cat_essential:"Batidos Esenciales",cat_wellness:"Batidos Bienestar",cat_protein:"Batidos Proteicos",cat_juices:"Jugos Frescos",future:"Próximamente",cat_andean:"Fusiones Andinas",cat_bowls:"Smoothie Bowls",cat_snacks:"Snacks",cat_wraps:"Sándwiches y Wraps",
  f_vegan:"Vegano",f_veg:"Vegetariano",f_prot:"Proteína",f_df:"Sin Lácteos",f_gf:"Sin Gluten",f_imm:"Inmunidad",f_post:"Post-entreno",f_energy:"Energía"
@@ -1129,9 +1128,12 @@ $("#loginForm").addEventListener("submit",async e=>{
   if(u && Object.prototype.hasOwnProperty.call(USERS,u) && USERS[u]===h){
     fails=0; err.textContent=""; toast(t("l_ok"));
     try{sessionStorage.setItem("mishki_staff",u)}catch(_){}
-    const newTab=$("#lNewTab").checked;
-    setTimeout(()=>{ if(newTab){window.open(INTRANET_URL,"_blank","noopener")} else {location.href=INTRANET_URL}
-      closeModal($("#loginModal")); e.target.reset(); },700);
+    // open the restaurant app in a NEW TAB right away (keeps the browser's click permission)
+    const w=window.open(INTRANET_URL,"_blank");
+    if(w){ try{w.opener=null}catch(_){}; closeModal($("#loginModal")); e.target.reset(); }
+    else { // pop-up blocked: show a link the user can click
+      err.innerHTML=`${t("l_blocked")} <a href="${INTRANET_URL}" target="_blank" rel="noopener" style="color:var(--green-dk);text-decoration:underline">${t("l_open")}</a>`;
+    }
   } else {
     fails++; err.textContent=t("l_err"); $("#lPass").value="";
     if(fails>=5){lockedUntil=Date.now()+30000;fails=0;err.textContent=t("l_lock")}
