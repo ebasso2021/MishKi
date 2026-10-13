@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Mishki Juice Bar – fresh pressed juices, smoothies and bowls in Edmonton, Alberta.">
+<title>Mishki Juice Bar | Healthy &amp; Great Tasting Smoothies and Juice – Edmonton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ================= BRAND TOKENS (edit here) ================= */
+:root{
+  --green:#6CB33F;      /* primary fresh green */
+  --green-dk:#3E7D1E;
+  --orange:#F58220;     /* juicy orange accent */
+  --orange-dk:#D9650A;
+  --yellow:#FFC72C;
+  --berry:#C2185B;
+  --purple:#6A2C91;
+  --ink:#2B2B2B;
+  --muted:#6b6b6b;
+  --bg:#ffffff;
+  --soft:#F6F8F2;
+  --line:#e7eadf;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --head:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --body:'Open Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input{font:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.15;font-weight:800}
+.upper{text-transform:uppercase;letter-spacing:.06em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;padding:14px 28px;border-radius:999px;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 18px rgba(245,130,32,.35)}
+.btn-orange:hover{background:var(--orange-dk)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(108,179,63,.35)}
+.btn-green:hover{background:var(--green-dk)}
+.btn-ghost{border:2px solid currentColor}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ================= TOP BAR ================= */
+.topbar{background:var(--green);color:#fff;font-size:.82rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;min-height:38px;gap:12px}
+.topbar a{font-weight:600}
+.topbar .promo{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ================= HEADER ================= */
+header.site{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 0 var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:900;font-size:1.55rem;color:var(--green-dk);letter-spacing:-.02em}
+.logo .dot{color:var(--orange)}
+.logo small{display:block;font-size:.6rem;letter-spacing:.25em;color:var(--orange);font-weight:700;margin-top:-4px}
+nav.main ul{display:flex;list-style:none;gap:clamp(12px,1.8vw,28px)}
+nav.main a{font-family:var(--head);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;position:relative;padding:6px 0}
+nav.main a::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--orange);border-radius:3px;transition:width .25s}
+nav.main a:hover::after{width:100%}
+.head-actions{display:flex;align-items:center;gap:12px}
+
+/* language switch */
+.lang-switch{display:inline-flex;align-items:center;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px;position:relative}
+.lang-switch button{position:relative;z-index:1;font-family:var(--head);font-weight:800;font-size:.75rem;padding:6px 12px;border-radius:999px;color:var(--muted);transition:color .2s}
+.lang-switch button[aria-pressed="true"]{color:#fff}
+.lang-switch .knob{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);background:var(--orange);border-radius:999px;transition:transform .25s}
+.lang-switch[data-lang="es"] .knob{transform:translateX(100%)}
+.topbar .lang-switch{background:rgba(255,255,255,.18);border-color:transparent}
+.topbar .lang-switch button{color:#fff}
+
+.intranet-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--head);font-weight:700;font-size:.78rem;text-transform:uppercase;padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff}
+.intranet-btn:hover{background:#000}
+.burger{display:none;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;background:var(--soft)}
+.burger span,.burger span::before,.burger span::after{display:block;width:22px;height:3px;background:var(--ink);border-radius:3px;position:relative;transition:.25s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+
+/* slide-out menu (mobile, like the reference site) */
+.drawer{position:fixed;inset:0;z-index:100;pointer-events:none}
+.drawer .scrim{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .3s}
+.drawer .panel{position:absolute;top:0;right:0;height:100%;width:min(360px,88vw);background:var(--green);color:#fff;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding:24px;overflow-y:auto}
+.drawer.open{pointer-events:auto}
+.drawer.open .scrim{opacity:1}
+.drawer.open .panel{transform:none}
+.drawer .panel header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.drawer .close{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);font-size:1.4rem}
+.drawer ul{list-style:none}
+.drawer li a{display:block;font-family:var(--head);font-weight:800;font-size:1.3rem;text-transform:uppercase;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.drawer .panel .btn{margin-top:24px}
+
+/* ================= HERO SLIDER ================= */
+.hero{position:relative;overflow:hidden;background:var(--soft)}
+.slides{display:flex;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.slide{min-width:100%;position:relative;min-height:clamp(440px,62vh,640px);display:flex;align-items:center}
+.slide .wrap{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:32px;width:100%;padding-top:40px;padding-bottom:60px}
+.slide h1,.slide h2{font-size:clamp(2.1rem,5.4vw,4.2rem);font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.slide p{font-size:clamp(1rem,1.6vw,1.2rem);margin:16px 0 28px;max-width:520px}
+.slide .eyebrow{display:inline-block;font-family:var(--head);font-weight:800;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.25);margin-bottom:16px}
+.s1{background:linear-gradient(120deg,#F58220 0%,#FFB347 60%,#FFC72C 100%);color:#fff}
+.s2{background:linear-gradient(120deg,#3E7D1E 0%,#6CB33F 60%,#A8D86E 100%);color:#fff}
+.s3{background:linear-gradient(120deg,#6A2C91 0%,#C2185B 70%,#F06292 100%);color:#fff}
+.hero-art{justify-self:center;width:min(420px,80%);filter:drop-shadow(0 25px 40px rgba(0,0,0,.25));animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px) rotate(-2deg)}}
+.hero .ctrl{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--ink);font-size:1.4rem;box-shadow:var(--shadow);z-index:2}
+.hero .prev{left:16px}.hero .next{right:16px}
+.dots{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:10px;z-index:2}
+.dots button{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.55);transition:.25s}
+.dots button[aria-current="true"]{background:#fff;width:32px;border-radius:8px}
+
+/* ================= SECTIONS ================= */
+section{padding:clamp(56px,8vw,96px) 0}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 40px}
+.sec-head h2{font-size:clamp(1.8rem,3.6vw,2.8rem);text-transform:uppercase;color:var(--green-dk)}
+.sec-head p{color:var(--muted);margin-top:10px;font-size:1.05rem}
+.squiggle{width:80px;height:10px;margin:14px auto 0;color:var(--orange)}
+
+/* category grid */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cat{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:22px 12px;text-align:center;transition:.25s;display:flex;flex-direction:column;align-items:center;gap:12px}
+.cat:hover,.cat[aria-pressed="true"]{border-color:var(--green);transform:translateY(-4px);box-shadow:var(--shadow)}
+.cat[aria-pressed="true"]{background:var(--soft)}
+.cat .ico{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:2.4rem}
+.cat span{font-family:var(--head);font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:36px 0 28px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;border:2px solid var(--line);font-family:var(--head);font-weight:700;font-size:.78rem;text-transform:uppercase;background:#fff;transition:.2s}
+.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.chip.clear{border-style:dashed;color:var(--muted)}
+
+/* products */
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s;text-align:left}
+.card:hover{transform:translateY(-6px)}
+.card .pic{aspect-ratio:1/1;display:grid;place-items:center;position:relative}
+.card .pic svg{width:58%}
+.card .tags{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.65rem;font-family:var(--head);font-weight:800;text-transform:uppercase;background:#fff;color:var(--green-dk);padding:4px 8px;border-radius:999px}
+.card .body{padding:16px 18px 20px}
+.card h3{font-size:1.05rem;text-transform:uppercase}
+.card p{font-size:.88rem;color:var(--muted);margin-top:6px}
+.empty{text-align:center;color:var(--muted);grid-column:1/-1;padding:40px}
+
+/* split feature */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.split .art{border-radius:28px;min-height:360px;display:grid;place-items:center;position:relative;overflow:hidden}
+.split h2{font-size:clamp(1.8rem,3.4vw,2.6rem);text-transform:uppercase;color:var(--green-dk);margin-bottom:14px}
+.split p{color:var(--muted);margin-bottom:14px}
+.list-check{list-style:none;margin:18px 0 26px}
+.list-check li{padding-left:32px;position:relative;margin:10px 0;font-weight:600}
+.list-check li::before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:.75rem;display:grid;place-items:center}
+
+/* loyalty band */
+.band{background:var(--orange);color:#fff;position:relative;overflow:hidden}
+.band .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.band h2{font-size:clamp(1.8rem,3.6vw,2.8rem);text-transform:uppercase}
+.band p{opacity:.95;margin:12px 0 24px;max-width:560px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.step{background:rgba(255,255,255,.15);border-radius:16px;padding:16px;text-align:center}
+.step b{display:block;font-family:var(--head);font-size:1.8rem}
+.step span{font-size:.82rem}
+.card-mock{aspect-ratio:1.6/1;border-radius:22px;background:linear-gradient(135deg,#fff 0%,#FFF3E6 100%);color:var(--ink);padding:24px;box-shadow:0 30px 60px rgba(0,0,0,.25);transform:rotate(-6deg);display:flex;flex-direction:column;justify-content:space-between;max-width:380px;justify-self:center;width:100%}
+.card-mock .logo{font-size:1.4rem}
+.card-mock .num{font-family:monospace;letter-spacing:.2em;color:var(--muted)}
+
+/* gift cards */
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.gift{border-radius:22px;aspect-ratio:1.6/1;padding:22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);transition:transform .25s}
+.gift:hover{transform:translateY(-6px) rotate(-1deg)}
+.gift h3{font-size:1.2rem;text-transform:uppercase}
+
+/* location */
+.loc{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:stretch}
+.loc-card{background:var(--soft);border-radius:var(--radius);padding:28px}
+.loc-card h3{text-transform:uppercase;color:var(--green-dk);margin-bottom:12px}
+.loc-card dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:.95rem}
+.loc-card dt{font-weight:700}
+.map{border-radius:var(--radius);overflow:hidden;min-height:320px;background:var(--soft);border:2px solid var(--line)}
+.map iframe{width:100%;height:100%;min-height:320px;border:0}
+
+/* newsletter */
+.news{background:var(--green);color:#fff;text-align:center}
+.news h2{font-size:clamp(1.6rem,3.2vw,2.4rem);text-transform:uppercase}
+.news form{display:flex;gap:12px;max-width:760px;margin:24px auto 0;flex-wrap:wrap;justify-content:center}
+.news input{flex:1 1 220px;padding:15px 20px;border-radius:999px;border:0;font-size:1rem;min-width:0}
+.news .ok{margin-top:14px;font-weight:700;min-height:1.6em}
+
+/* contact */
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-form .full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--head);font-weight:700;font-size:.78rem;text-transform:uppercase}
+.field input,.field textarea,.field select{padding:13px 16px;border:2px solid var(--line);border-radius:14px;font:inherit;background:#fff;width:100%}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--green);outline:none}
+
+/* footer */
+footer.site{background:var(--ink);color:#d8d8d8;padding:56px 0 24px;font-size:.92rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+footer h4{color:#fff;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+footer ul{list-style:none}
+footer li{margin:8px 0}
+footer a:hover{color:var(--yellow)}
+footer .logo{color:#fff}
+.social{display:flex;gap:10px;margin-top:14px}
+.social a{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;transition:.2s}
+.social a:hover{background:var(--orange)}
+.social svg{width:20px;height:20px;fill:#fff}
+.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem}
+.legal nav{display:flex;gap:18px;flex-wrap:wrap}
+
+/* ================= MODALS ================= */
+.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55)}
+.modal.open{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.modal .box{background:#fff;border-radius:24px;width:min(860px,100%);max-height:calc(100dvh - 32px);overflow:auto;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.modal .x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:var(--soft);font-size:1.3rem;z-index:2}
+.pd{display:grid;grid-template-columns:1fr 1fr}
+.pd .pic{display:grid;place-items:center;min-height:320px;border-radius:24px 0 0 24px}
+.pd .pic svg{width:60%}
+.pd .info{padding:36px 30px}
+.pd h3{font-size:1.7rem;text-transform:uppercase;color:var(--green-dk)}
+.pd h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px;color:var(--orange)}
+.pd .ing{display:flex;flex-wrap:wrap;gap:8px}
+.pd .ing span{background:var(--soft);padding:6px 12px;border-radius:999px;font-size:.85rem}
+.also{padding:0 30px 30px}
+.also .row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.also button{background:var(--soft);border-radius:16px;padding:12px;text-align:center;font-family:var(--head);font-weight:700;font-size:.78rem;text-transform:uppercase}
+.also button svg{width:56px;margin:0 auto 6px}
+
+/* login */
+.login .box{width:min(440px,100%);padding:36px 30px}
+.login h3{font-size:1.5rem;text-transform:uppercase;color:var(--green-dk);display:flex;align-items:center;gap:10px}
+.login p.sub{color:var(--muted);font-size:.9rem;margin:8px 0 22px}
+.login form{display:grid;gap:14px}
+.pw-wrap{position:relative}
+.pw-wrap button{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:.75rem;font-weight:700;color:var(--muted);padding:6px}
+.err{color:#c62828;font-weight:600;font-size:.88rem;min-height:1.3em}
+.remember{display:flex;align-items:center;gap:8px;font-size:.88rem}
+.login .note{font-size:.75rem;color:var(--muted);margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+
+/* toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;z-index:200;transition:transform .3s;font-weight:600;font-size:.9rem;max-width:calc(100vw - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0)}
+.to-top{position:fixed;right:16px;bottom:16px;width:48px;height:48px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.3rem;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.to-top.show{opacity:1;pointer-events:auto}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* ================= RESPONSIVE ================= */
+/* Large laptops / MacBook Pro 16" and up */
+@media (min-width:1025px){.topbar .lang-switch{display:none}}
+@media (min-width:1600px){:root{--maxw:1400px}body{font-size:17px}}
+/* Small laptops / MacBook Air 13" / iPad landscape */
+@media (max-width:1180px){
+  nav.main ul{gap:14px}
+  nav.main a{font-size:.76rem}
+  .intranet-btn .txt{display:none}
+}
+/* Tablets (iPad portrait, Android tablets) */
+@media (max-width:1024px){
+  nav.main{display:none}
+  .burger{display:inline-flex}
+  .head-actions .lang-switch{display:none}
+  .cats{grid-template-columns:repeat(4,1fr);gap:12px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .gifts{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:820px){
+  .slide .wrap{grid-template-columns:1fr;text-align:center;padding-top:30px;padding-bottom:70px}
+  .slide p{margin-left:auto;margin-right:auto}
+  .hero-art{width:min(260px,60%);order:-1}
+  .hero .ctrl{display:none}
+  .split,.band .wrap,.loc{grid-template-columns:1fr}
+  .split .art{min-height:260px}
+  .split.rev .art{order:-1}
+  .pd{grid-template-columns:1fr}
+  .pd .pic{border-radius:24px 24px 0 0;min-height:240px}
+  .cats{grid-template-columns:repeat(2,1fr)}
+}
+/* Phones */
+@media (max-width:560px){
+  .topbar .promo{display:none}
+  .topbar .wrap{justify-content:flex-end}
+  header.site .wrap{height:64px}
+  .logo{font-size:1.25rem}
+  .cat{padding:16px 8px}
+  .cat .ico{width:60px;height:60px;font-size:1.9rem}
+  .cat span{font-size:.72rem}
+  .products{grid-template-columns:repeat(2,1fr);gap:12px}
+  .card .body{padding:12px}
+  .card h3{font-size:.85rem}
+  .card p{display:none}
+  .gifts{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .contact-form{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .also .row{grid-template-columns:repeat(3,1fr)}
+  .btn{padding:13px 22px}
+  .news form{flex-direction:column}
+  .news input,.news .btn{width:100%}
+}
+@media (max-width:360px){.products{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="promo" data-i18n="promo">Fresh pressed in Edmonton, every day 🍊</span>
+    <div class="lang-switch" data-lang="en" role="group" aria-label="Language / Idioma">
+      <span class="knob" aria-hidden="true"></span>
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Mishki Juice Bar home">
+      <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="36" r="24" fill="#F58220"/><circle cx="32" cy="36" r="17" fill="#FFC72C"/><path d="M32 22v28M18 36h28M22 26l20 20M42 26L22 46" stroke="#F58220" stroke-width="2.5" stroke-linecap="round"/><path d="M33 12c6-8 16-6 18-4-4 6-12 8-18 4z" fill="#6CB33F"/></svg>
+      <span>Mishki<span class="dot">.</span><small>JUICE BAR</small></span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <ul>
+        <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
+        <li><a href="#location" data-i18n="nav_loc">Find a Location</a></li>
+        <li><a href="#about" data-i18n="nav_about">About Us</a></li>
+        <li><a href="#loyalty" data-i18n="nav_loyalty">Loyalty</a></li>
+        <li><a href="#gift" data-i18n="nav_gift">Gift Cards</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <div class="lang-switch" data-lang="en" role="group" aria-label="Language / Idioma">
+        <span class="knob" aria-hidden="true"></span>
+        <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <button class="intranet-btn" type="button" data-open-login aria-label="Intranet login">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span class="txt" data-i18n="intranet">Intranet</span>
+      </button>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MOBILE DRAWER ================= -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="scrim" data-close-drawer></div>
+  <aside class="panel" role="dialog" aria-label="Menu">
+    <header>
+      <span class="logo" style="color:#fff">Mishki<span class="dot" style="color:var(--yellow)">.</span></span>
+      <button class="close" type="button" data-close-drawer aria-label="Close menu">✕</button>
+    </header>
+    <ul>
+      <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
+      <li><a href="#location" data-i18n="nav_loc">Find a Location</a></li>
+      <li><a href="#about" data-i18n="nav_about">About Us</a></li>
+      <li><a href="#loyalty" data-i18n="nav_loyalty">Loyalty</a></li>
+      <li><a href="#gift" data-i18n="nav_gift">Gift Cards</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+    </ul>
+    <div class="lang-switch" data-lang="en" role="group" aria-label="Language / Idioma" style="margin-top:24px;align-self:flex-start">
+      <span class="knob" aria-hidden="true"></span>
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <button class="btn btn-orange" type="button" data-open-login>🔒 <span data-i18n="intranet_login">Staff Intranet Login</span></button>
+  </aside>
+</div>
+
+<main id="top">
+<!-- ================= HERO ================= -->
+<section class="hero" style="padding:0" aria-roledescription="carousel" aria-label="Highlights">
+  <div class="slides">
+    <div class="slide s1" role="group" aria-roledescription="slide" aria-label="1 / 3">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow" data-i18n="h1_eyebrow">New in Edmonton</span>
+          <h1 data-i18n="h1_title">Taste the sweet side of healthy</h1>
+          <p data-i18n="h1_text">Delicious smoothies, fresh pressed juices &amp; good food for people on the go — inspired by Andean superfruits.</p>
+          <a href="#menu" class="btn btn-green" data-i18n="cta_menu">Discover our menu</a>
+        </div>
+        <svg class="hero-art" viewBox="0 0 200 260" aria-hidden="true"><path d="M50 60h100l-12 180a12 12 0 0 1-12 11H74a12 12 0 0 1-12-11z" fill="#fff" opacity=".95"/><path d="M58 95h84l-9 140a8 8 0 0 1-8 7H75a8 8 0 0 1-8-7z" fill="#F58220"/><path d="M58 95h84l-2 25H60z" fill="#FFC72C"/><rect x="40" y="48" width="120" height="16" rx="8" fill="#fff"/><path d="M118 52l22-50" stroke="#6CB33F" stroke-width="9" stroke-linecap="round"/><circle cx="160" cy="70" r="26" fill="#FFC72C"/><circle cx="160" cy="70" r="18" fill="#FFE08A"/></svg>
+      </div>
+    </div>
+    <div class="slide s2" role="group" aria-roledescription="slide" aria-label="2 / 3">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow" data-i18n="h2_eyebrow">Fresh pressed</span>
+          <h2 data-i18n="h2_title">Green power, every day</h2>
+          <p data-i18n="h2_text">Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.</p>
+          <a href="#menu" class="btn btn-orange" data-i18n="cta_juices" data-cat-link="juices">See fresh juices</a>
+        </div>
+        <svg class="hero-art" viewBox="0 0 200 260" aria-hidden="true"><rect x="62" y="40" width="76" height="210" rx="18" fill="#fff" opacity=".95"/><rect x="70" y="80" width="60" height="160" rx="12" fill="#3E7D1E"/><rect x="72" y="18" width="56" height="26" rx="6" fill="#F58220"/><path d="M70 150c20-14 40 14 60 0v90H70z" fill="#A8D86E"/><path d="M30 200c-14-30 6-60 34-62-2 30-12 52-34 62z" fill="#A8D86E"/><path d="M170 120c14-26-2-52-26-56 0 26 8 46 26 56z" fill="#fff" opacity=".7"/></svg>
+      </div>
+    </div>
+    <div class="slide s3" role="group" aria-roledescription="slide" aria-label="3 / 3">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow" data-i18n="h3_eyebrow">Mishki Rewards</span>
+          <h2 data-i18n="h3_title">Sip, earn &amp; get rewarded</h2>
+          <p data-i18n="h3_text">Join our loyalty program and collect points on every smoothie, juice and bowl.</p>
+          <a href="#loyalty" class="btn btn-orange" data-i18n="cta_join">Join now</a>
+        </div>
+        <svg class="hero-art" viewBox="0 0 220 220" aria-hidden="true"><ellipse cx="110" cy="150" rx="96" ry="22" fill="#fff" opacity=".95"/><path d="M14 150a96 60 0 0 0 192 0z" fill="#fff" opacity=".95"/><circle cx="70" cy="135" r="20" fill="#6A2C91"/><circle cx="100" cy="125" r="16" fill="#F06292"/><circle cx="135" cy="132" r="20" fill="#FFC72C"/><circle cx="160" cy="140" r="12" fill="#6CB33F"/><circle cx="88" cy="145" r="10" fill="#C2185B"/><path d="M120 60l-10-40" stroke="#fff" stroke-width="6" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+  <button class="ctrl prev" type="button" aria-label="Previous slide">‹</button>
+  <button class="ctrl next" type="button" aria-label="Next slide">›</button>
+  <div class="dots" role="tablist"></div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 data-i18n="menu_title">Discover our menu</h2>
+      <svg class="squiggle" viewBox="0 0 80 10" aria-hidden="true"><path d="M2 5q8-8 16 0t16 0 16 0 16 0 12 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      <p data-i18n="menu_sub">Delicious smoothies, fresh pressed juices &amp; good food for people on the go.</p>
+    </div>
+
+    <div class="cats reveal" id="cats"></div>
+    <div class="filters" id="filters"></div>
+    <div class="products" id="products" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" style="background:var(--soft)">
+  <div class="wrap split reveal">
+    <div>
+      <h2 data-i18n="about_title">Made fresh. Made with love.</h2>
+      <p data-i18n="about_p1">"Mishki" means "sweet" in Quechua. We blend the vibrant superfruits of the Andes — maracuyá, lúcuma, camu camu, purple corn — with Canadian favourites to create drinks that taste as good as they make you feel.</p>
+      <p data-i18n="about_p2">Every smoothie, juice and bowl is made to order right here in Edmonton.</p>
+      <ul class="list-check">
+        <li data-i18n="about_l1">Real fruit and vegetables, prepared daily</li>
+        <li data-i18n="about_l2">Vegan, dairy-free and gluten-friendly options</li>
+        <li data-i18n="about_l3">Proudly local and community-minded</li>
+      </ul>
+      <a href="#menu" class="btn btn-green" data-i18n="cta_menu">Discover our menu</a>
+    </div>
+    <div class="art" style="background:linear-gradient(135deg,#FFC72C,#F58220)">
+      <svg viewBox="0 0 300 300" width="80%" aria-hidden="true"><circle cx="150" cy="150" r="120" fill="#fff" opacity=".25"/><circle cx="110" cy="130" r="55" fill="#6A2C91"/><circle cx="110" cy="130" r="40" fill="#8E44AD"/><circle cx="190" cy="170" r="60" fill="#FFC72C"/><circle cx="190" cy="170" r="44" fill="#FFE08A"/><g fill="#3E2723"><circle cx="180" cy="160" r="4"/><circle cx="200" cy="165" r="4"/><circle cx="190" cy="180" r="4"/><circle cx="175" cy="178" r="4"/><circle cx="205" cy="183" r="4"/></g><path d="M150 70c10-30 40-34 52-30-10 22-32 34-52 30z" fill="#6CB33F"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOYALTY ================= -->
+<section id="loyalty" class="band">
+  <div class="wrap reveal">
+    <div>
+      <h2 data-i18n="loy_title">Mishki Rewards</h2>
+      <p data-i18n="loy_text">Earn points with every purchase and redeem them for free drinks, birthday treats and member-only offers.</p>
+      <div class="steps">
+        <div class="step"><b>1</b><span data-i18n="loy_s1">Sign up for free</span></div>
+        <div class="step"><b>2</b><span data-i18n="loy_s2">Earn points on every order</span></div>
+        <div class="step"><b>3</b><span data-i18n="loy_s3">Redeem tasty rewards</span></div>
+      </div>
+      <a href="#contact" class="btn btn-green" style="margin-top:24px" data-i18n="cta_join">Join now</a>
+    </div>
+    <div class="card-mock" aria-hidden="true">
+      <span class="logo" style="color:var(--green-dk)">Mishki<span class="dot">.</span><small>REWARDS</small></span>
+      <span class="num">•••• •••• •••• 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GIFT CARDS ================= -->
+<section id="gift">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 data-i18n="gift_title">Gift Cards</h2>
+      <p data-i18n="gift_sub">The perfect gift for every occasion. Available in store.</p>
+    </div>
+    <div class="gifts reveal">
+      <div class="gift" style="background:linear-gradient(135deg,#F58220,#FFC72C)"><h3 data-i18n="gift_1">Thank you!</h3><span class="logo" style="color:#fff">Mishki.</span></div>
+      <div class="gift" style="background:linear-gradient(135deg,#3E7D1E,#6CB33F)"><h3 data-i18n="gift_2">Happy Birthday!</h3><span class="logo" style="color:#fff">Mishki.</span></div>
+      <div class="gift" style="background:linear-gradient(135deg,#6A2C91,#C2185B)"><h3 data-i18n="gift_3">Stay Fresh!</h3><span class="logo" style="color:#fff">Mishki.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section id="location" style="background:var(--soft)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 data-i18n="loc_title">Find a Location</h2>
+      <p data-i18n="loc_sub">Come visit us in Edmonton, Alberta.</p>
+    </div>
+    <div class="loc reveal">
+      <div class="loc-card">
+        <h3>Mishki – Edmonton</h3>
+        <dl>
+          <dt data-i18n="loc_addr">Address</dt><dd data-i18n="loc_addr_v">Edmonton, AB, Canada (exact address coming soon)</dd>
+          <dt data-i18n="loc_hours">Hours</dt><dd data-i18n="loc_hours_v">To be announced</dd>
+          <dt data-i18n="loc_phone">Phone</dt><dd>—</dd>
+          <dt>Email</dt><dd>—</dd>
+        </dl>
+        <a class="btn btn-orange" style="margin-top:22px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Edmonton+Alberta" data-i18n="loc_dir">Get directions</a>
+      </div>
+      <div class="map">
+        <iframe title="Map of Edmonton" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-113.62%2C53.48%2C-113.38%2C53.60&amp;layer=mapnik"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap split reveal">
+    <div>
+      <h2 data-i18n="contact_title">Contact Us</h2>
+      <p data-i18n="contact_text">Questions, catering, feedback or partnership ideas? Send us a message and our team will get back to you.</p>
+    </div>
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="field"><label for="cName" data-i18n="f_name">Full name</label><input id="cName" required autocomplete="name"></div>
+      <div class="field"><label for="cEmail" data-i18n="f_email">Email</label><input id="cEmail" type="email" required autocomplete="email"></div>
+      <div class="field full"><label for="cTopic" data-i18n="f_topic">Topic</label>
+        <select id="cTopic">
+          <option data-i18n="t_general">General question</option>
+          <option data-i18n="t_catering">Catering</option>
+          <option data-i18n="t_feedback">Feedback</option>
+          <option data-i18n="t_jobs">Careers</option>
+        </select></div>
+      <div class="field full"><label for="cMsg" data-i18n="f_msg">Message</label><textarea id="cMsg" required></textarea></div>
+      <div class="full"><button class="btn btn-green" type="submit" data-i18n="send">Send</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="news">
+  <div class="wrap reveal">
+    <h2 data-i18n="news_title">Subscribe to our newsletter</h2>
+    <p data-i18n="news_sub">Be the first to know about new flavours, promos and events.</p>
+    <form id="newsForm" novalidate>
+      <label class="sr-only" for="nName" data-i18n="f_name">Full name</label>
+      <input id="nName" data-i18n-ph="ph_name" placeholder="Full Name" required autocomplete="name">
+      <label class="sr-only" for="nEmail">Email</label>
+      <input id="nEmail" type="email" data-i18n-ph="ph_email" placeholder="Email" required autocomplete="email">
+      <button class="btn btn-orange" type="submit" data-i18n="send">Send</button>
+    </form>
+    <div class="ok" id="newsOk" role="status"></div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="logo">Mishki<span class="dot">.</span><small>JUICE BAR</small></span>
+        <p style="margin-top:14px;max-width:320px" data-i18n="foot_about">Healthy &amp; great tasting smoothies and juices, made fresh in Edmonton, Alberta.</p>
+        <h4 style="margin-top:22px" data-i18n="stay">Stay Connected</h4>
+        <div class="social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.4.3-.5.6-.5z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.3 2.2 2.2 4.3 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.6 2.2 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.6-.1 5.7-2.2 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.6-2.2-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.6.1 3.9 1.4 4 4 .1 1 .1 1.4.1 4.1s0 3-.1 4c-.1 2.6-1.4 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.6-.1-3.9-1.4-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.6 1.4-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8 8 0 0 0 4.4 1.4V6.6a4.5 4.5 0 0 1-4.4-4.6z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot_explore">Explore</h4>
+        <ul>
+          <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
+          <li><a href="#about" data-i18n="nav_about">About Us</a></li>
+          <li><a href="#loyalty" data-i18n="nav_loyalty">Loyalty</a></li>
+          <li><a href="#gift" data-i18n="nav_gift">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot_help">Help</h4>
+        <ul>
+          <li><a href="#location" data-i18n="nav_loc">Find a Location</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
+          <li><a href="#contact" data-i18n="t_jobs">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot_staff">Staff</h4>
+        <ul>
+          <li><a href="#" data-open-login>🔒 <span data-i18n="intranet_login">Staff Intranet Login</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr"></span> Mishki Juice Bar · Edmonton, Alberta, Canada</span>
+      <nav aria-label="Legal">
+        <a href="#" data-i18n="terms">Terms &amp; Conditions</a>
+        <a href="#" data-i18n="privacy">Privacy Policy</a>
+        <a href="#" data-i18n="access">Accessibility Policy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= PRODUCT MODAL ================= -->
+<div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pdTitle">
+  <div class="box">
+    <button class="x" type="button" data-close-modal aria-label="Close">✕</button>
+    <div class="pd">
+      <div class="pic" id="pdPic"></div>
+      <div class="info">
+        <h3 id="pdTitle"></h3>
+        <p id="pdDesc" style="color:var(--muted);margin-top:8px"></p>
+        <h4 data-i18n="ingredients">Ingredients</h4>
+        <div class="ing" id="pdIng"></div>
+        <h4 data-i18n="benefits">Benefits</h4>
+        <div class="ing" id="pdTags"></div>
+        <a href="#location" class="btn btn-orange" style="margin-top:24px" data-close-modal data-i18n="find_store">Find a store</a>
+      </div>
+    </div>
+    <div class="also">
+      <h4 style="font-size:.85rem;text-transform:uppercase;margin-bottom:12px" data-i18n="also">You may also like</h4>
+      <div class="row" id="pdAlso"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= INTRANET LOGIN MODAL ================= -->
+<div class="modal login" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="box">
+    <button class="x" type="button" data-close-modal aria-label="Close">✕</button>
+    <h3 id="loginTitle">🔒 <span data-i18n="login_title">Staff Intranet</span></h3>
+    <p class="sub" data-i18n="login_sub">Sign in to access the Mishki restaurant management app.</p>
+    <form id="loginForm" novalidate autocomplete="on">
+      <div class="field"><label for="lUser" data-i18n="l_user">Username</label><input id="lUser" required autocomplete="username"></div>
+      <div class="field"><label for="lPass" data-i18n="l_pass">Password</label>
+        <div class="pw-wrap"><input id="lPass" type="password" required autocomplete="current-password"><button type="button" id="togglePw" data-i18n="show">Show</button></div>
+      </div>
+      <label class="remember"><input type="checkbox" id="lNewTab" checked> <span data-i18n="l_newtab">Open in a new tab</span></label>
+      <div class="err" id="lErr" role="alert"></div>
+      <button class="btn btn-green" type="submit" data-i18n="l_btn">Sign in</button>
+    </form>
+    <p class="note" data-i18n="login_note">Authorized personnel only. You will be redirected to the restaurant-app repository on GitHub, where your GitHub account permissions apply.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+<script>
+/* =====================================================================
+   CONFIGURATION
+   ===================================================================== */
+const INTRANET_URL = "https://github.com/ebasso2021/restaurant-app";
+/* Login credentials are stored as SHA-256 hashes (never plain text).
+   Default demo: user "admin" / password "Mishki2026!"  -> CHANGE THEM.
+   To create a new hash, open the browser console and run:
+     sha256("yourPassword").then(console.log)                           */
+const USERS = {
+  "admin": "c658dfac0683043f84ded2763406657c1f8f41ab8dc85c99394f016cea81a23b"
+};
+
+/* =====================================================================
+   TRANSLATIONS (EN default / ES)
+   ===================================================================== */
+const I18N = {
+en:{
+ promo:"Fresh pressed in Edmonton, every day 🍊",
+ nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_loyalty:"Loyalty",nav_gift:"Gift Cards",nav_contact:"Contact Us",
+ intranet:"Intranet",intranet_login:"Staff Intranet Login",
+ h1_eyebrow:"New in Edmonton",h1_title:"Taste the sweet side of healthy",h1_text:"Delicious smoothies, fresh pressed juices & good food for people on the go — inspired by Andean superfruits.",
+ h2_eyebrow:"Fresh pressed",h2_title:"Green power, every day",h2_text:"Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.",
+ h3_eyebrow:"Mishki Rewards",h3_title:"Sip, earn & get rewarded",h3_text:"Join our loyalty program and collect points on every smoothie, juice and bowl.",
+ cta_menu:"Discover our menu",cta_juices:"See fresh juices",cta_join:"Join now",
+ menu_title:"Discover our menu",menu_sub:"Delicious smoothies, fresh pressed juices & good food for people on the go.",
+ all:"All",clear:"Deselect all",empty:"No items match these filters.",
+ about_title:"Made fresh. Made with love.",
+ about_p1:"\"Mishki\" means \"sweet\" in Quechua. We blend the vibrant superfruits of the Andes — maracuyá, lúcuma, camu camu, purple corn — with Canadian favourites to create drinks that taste as good as they make you feel.",
+ about_p2:"Every smoothie, juice and bowl is made to order right here in Edmonton.",
+ about_l1:"Real fruit and vegetables, prepared daily",about_l2:"Vegan, dairy-free and gluten-friendly options",about_l3:"Proudly local and community-minded",
+ loy_title:"Mishki Rewards",loy_text:"Earn points with every purchase and redeem them for free drinks, birthday treats and member-only offers.",
+ loy_s1:"Sign up for free",loy_s2:"Earn points on every order",loy_s3:"Redeem tasty rewards",
+ gift_title:"Gift Cards",gift_sub:"The perfect gift for every occasion. Available in store.",gift_1:"Thank you!",gift_2:"Happy Birthday!",gift_3:"Stay Fresh!",
+ loc_title:"Find a Location",loc_sub:"Come visit us in Edmonton, Alberta.",loc_addr:"Address",loc_addr_v:"Edmonton, AB, Canada (exact address coming soon)",loc_hours:"Hours",loc_hours_v:"To be announced",loc_phone:"Phone",loc_dir:"Get directions",
+ contact_title:"Contact Us",contact_text:"Questions, catering, feedback or partnership ideas? Send us a message and our team will get back to you.",
+ f_name:"Full name",f_email:"Email",f_topic:"Topic",f_msg:"Message",t_general:"General question",t_catering:"Catering",t_feedback:"Feedback",t_jobs:"Careers",send:"Send",
+ news_title:"Subscribe to our newsletter",news_sub:"Be the first to know about new flavours, promos and events.",ph_name:"Full Name",ph_email:"Email",
+ news_ok:"Thanks! You're on the list 🎉",contact_ok:"Thanks! Your message is ready to send.",form_err:"Please fill in all fields with a valid email.",
+ foot_about:"Healthy & great tasting smoothies and juices, made fresh in Edmonton, Alberta.",stay:"Stay Connected",foot_explore:"Explore",foot_help:"Help",foot_staff:"Staff",
+ terms:"Terms & Conditions",privacy:"Privacy Policy",access:"Accessibility Policy",
+ ingredients:"Ingredients",benefits:"Benefits",find_store:"Find a store",also:"You may also like",
+ login_title:"Staff Intranet",login_sub:"Sign in to access the Mishki restaurant management app.",l_user:"Username",l_pass:"Password",show:"Show",hide:"Hide",l_newtab:"Open in a new tab",l_btn:"Sign in",
+ login_note:"Authorized personnel only. You will be redirected to the restaurant-app repository on GitHub, where your GitHub account permissions apply.",
+ l_err:"Invalid username or password.",l_ok:"Welcome! Redirecting to the intranet…",l_lock:"Too many attempts. Please wait 30 seconds.",
+ cat_essential:"Essential Smoothies",cat_wellness:"Wellness Smoothies",cat_protein:"Protein Smoothies",cat_juices:"Fresh Pressed Juices",cat_andean:"Andean Fusions",cat_bowls:"Smoothie Bowls",cat_snacks:"Snacks",cat_wraps:"Sandwiches & Wraps",
+ f_vegan:"Vegan",f_veg:"Vegetarian",f_prot:"Protein",f_df:"Dairy Free",f_gf:"Gluten Friendly",f_imm:"Immunity",f_post:"Post-workout",f_energy:"Energy"
+},
+es:{
+ promo:"Recién exprimido en Edmonton, todos los días 🍊",
+ nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_loyalty:"Recompensas",nav_gift:"Tarjetas de Regalo",nav_contact:"Contáctanos",
+ intranet:"Intranet",intranet_login:"Acceso Intranet Personal",
+ h1_eyebrow:"Nuevo en Edmonton",h1_title:"Prueba el lado dulce de lo saludable",h1_text:"Deliciosos batidos, jugos recién exprimidos y buena comida para llevar — inspirados en las superfrutas andinas.",
+ h2_eyebrow:"Recién exprimido",h2_title:"Poder verde, todos los días",h2_text:"Jugos verdes prensados en frío y mezclas de frutas hechas al momento. Sin atajos, solo ingredientes reales.",
+ h3_eyebrow:"Recompensas Mishki",h3_title:"Bebe, acumula y gana",h3_text:"Únete a nuestro programa de lealtad y acumula puntos con cada batido, jugo y bowl.",
+ cta_menu:"Descubre nuestro menú",cta_juices:"Ver jugos frescos",cta_join:"Únete ahora",
+ menu_title:"Descubre nuestro menú",menu_sub:"Deliciosos batidos, jugos recién exprimidos y buena comida para llevar.",
+ all:"Todo",clear:"Quitar filtros",empty:"Ningún producto coincide con estos filtros.",
+ about_title:"Hecho fresco. Hecho con amor.",
+ about_p1:"\"Mishki\" significa \"dulce\" en quechua. Combinamos las superfrutas de los Andes — maracuyá, lúcuma, camu camu, maíz morado — con favoritos canadienses para crear bebidas tan ricas como saludables.",
+ about_p2:"Cada batido, jugo y bowl se prepara al momento aquí mismo en Edmonton.",
+ about_l1:"Frutas y verduras reales, preparadas a diario",about_l2:"Opciones veganas, sin lácteos y sin gluten",about_l3:"Orgullosamente local y comprometido con la comunidad",
+ loy_title:"Recompensas Mishki",loy_text:"Gana puntos con cada compra y canjéalos por bebidas gratis, sorpresas de cumpleaños y ofertas exclusivas.",
+ loy_s1:"Regístrate gratis",loy_s2:"Acumula puntos en cada pedido",loy_s3:"Canjea deliciosas recompensas",
+ gift_title:"Tarjetas de Regalo",gift_sub:"El regalo perfecto para cualquier ocasión. Disponibles en tienda.",gift_1:"¡Gracias!",gift_2:"¡Feliz Cumpleaños!",gift_3:"¡Mantente Fresco!",
+ loc_title:"Encuéntranos",loc_sub:"Visítanos en Edmonton, Alberta.",loc_addr:"Dirección",loc_addr_v:"Edmonton, AB, Canadá (dirección exacta próximamente)",loc_hours:"Horario",loc_hours_v:"Por anunciar",loc_phone:"Teléfono",loc_dir:"Cómo llegar",
+ contact_title:"Contáctanos",contact_text:"¿Preguntas, catering, comentarios o ideas de colaboración? Escríbenos y nuestro equipo te responderá.",
+ f_name:"Nombre completo",f_email:"Correo electrónico",f_topic:"Tema",f_msg:"Mensaje",t_general:"Consulta general",t_catering:"Catering",t_feedback:"Comentarios",t_jobs:"Empleos",send:"Enviar",
+ news_title:"Suscríbete a nuestro boletín",news_sub:"Sé el primero en conocer nuevos sabores, promociones y eventos.",ph_name:"Nombre completo",ph_email:"Correo electrónico",
+ news_ok:"¡Gracias! Ya estás en la lista 🎉",contact_ok:"¡Gracias! Tu mensaje está listo para enviarse.",form_err:"Completa todos los campos con un correo válido.",
+ foot_about:"Batidos y jugos saludables y deliciosos, hechos al momento en Edmonton, Alberta.",stay:"Síguenos",foot_explore:"Explorar",foot_help:"Ayuda",foot_staff:"Personal",
+ terms:"Términos y Condiciones",privacy:"Política de Privacidad",access:"Política de Accesibilidad",
+ ingredients:"Ingredientes",benefits:"Beneficios",find_store:"Buscar tienda",also:"También te puede gustar",
+ login_title:"Intranet del Personal",login_sub:"Inicia sesión para acceder a la app de gestión del restaurante Mishki.",l_user:"Usuario",l_pass:"Contraseña",show:"Ver",hide:"Ocultar",l_newtab:"Abrir en una pestaña nueva",l_btn:"Iniciar sesión",
+ login_note:"Solo personal autorizado. Serás redirigido al repositorio restaurant-app en GitHub, donde aplican los permisos de tu cuenta de GitHub.",
+ l_err:"Usuario o contraseña incorrectos.",l_ok:"¡Bienvenido! Redirigiendo a la intranet…",l_lock:"Demasiados intentos. Espera 30 segundos.",
+ cat_essential:"Batidos Esenciales",cat_wellness:"Batidos Bienestar",cat_protein:"Batidos Proteicos",cat_juices:"Jugos Recién Exprimidos",cat_andean:"Fusiones Andinas",cat_bowls:"Smoothie Bowls",cat_snacks:"Snacks",cat_wraps:"Sándwiches y Wraps",
+ f_vegan:"Vegano",f_veg:"Vegetariano",f_prot:"Proteína",f_df:"Sin Lácteos",f_gf:"Sin Gluten",f_imm:"Inmunidad",f_post:"Post-entreno",f_energy:"Energía"
+}};
+
+/* =====================================================================
+   MENU DATA (sample items – edit freely)
+   ===================================================================== */
+const CATS=[
+ {id:"essential",ico:"🍓",bg:"#FFE3E3"},{id:"wellness",ico:"🌿",bg:"#E5F4DA"},
+ {id:"protein",ico:"💪",bg:"#FFF1D6"},{id:"juices",ico:"🧃",bg:"#FFE9D2"},
+ {id:"andean",ico:"🏔️",bg:"#EFE2F7"},{id:"bowls",ico:"🥣",bg:"#FCE4EC"},
+ {id:"snacks",ico:"🥟",bg:"#FFF8D6"},{id:"wraps",ico:"🌯",bg:"#E3F2FD"}];
+const FILTERS=["vegan","veg","prot","df","gf","imm","post","energy"];
+const P=[
+ {cat:"essential",c:["#E53935","#FF8A80"],tags:["veg","gf"],en:["Strawberry Sunrise","Strawberry, banana, orange juice and yogurt.","Strawberry|Banana|Orange juice|Yogurt"],es:["Amanecer de Fresa","Fresa, plátano, jugo de naranja y yogur.","Fresa|Plátano|Jugo de naranja|Yogur"]},
+ {cat:"essential",c:["#FB8C00","#FFD54F"],tags:["vegan","df","gf"],en:["Mango Tango","Mango, pineapple, passion fruit and apple juice.","Mango|Pineapple|Passion fruit|Apple juice"],es:["Mango Tango","Mango, piña, maracuyá y jugo de manzana.","Mango|Piña|Maracuyá|Jugo de manzana"]},
+ {cat:"wellness",c:["#43A047","#AED581"],tags:["vegan","df","gf","imm"],en:["Green Detox","Spinach, kale, pineapple, cucumber, ginger and lime.","Spinach|Kale|Pineapple|Cucumber|Ginger|Lime"],es:["Detox Verde","Espinaca, kale, piña, pepino, jengibre y limón.","Espinaca|Kale|Piña|Pepino|Jengibre|Limón"]},
+ {cat:"wellness",c:["#C62828","#F48FB1"],tags:["vegan","df","gf","imm"],en:["Camu Camu Boost","Camu camu, strawberry, mango and orange juice.","Camu camu|Strawberry|Mango|Orange juice"],es:["Camu Camu Boost","Camu camu, fresa, mango y jugo de naranja.","Camu camu|Fresa|Mango|Jugo de naranja"]},
+ {cat:"protein",c:["#6D4C41","#D7CCC8"],tags:["veg","prot","post","gf"],en:["Peanut Power","Banana, peanut butter, cacao, oat milk and protein.","Banana|Peanut butter|Cacao|Oat milk|Whey protein"],es:["Poder de Maní","Plátano, mantequilla de maní, cacao, leche de avena y proteína.","Plátano|Mantequilla de maní|Cacao|Leche de avena|Proteína whey"]},
+ {cat:"protein",c:["#8D6E63","#FFE0B2"],tags:["veg","prot","post","energy"],en:["Lúcuma Muscle","Lúcuma, banana, dates, milk, maca and protein.","Lúcuma|Banana|Dates|Milk|Maca|Whey protein"],es:["Lúcuma Muscle","Lúcuma, plátano, dátiles, leche, maca y proteína.","Lúcuma|Plátano|Dátiles|Leche|Maca|Proteína whey"]},
+ {cat:"juices",c:["#F57C00","#FFCC80"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
+ {cat:"juices",c:["#2E7D32","#C5E1A5"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
+ {cat:"andean",c:["#4A148C","#CE93D8"],tags:["vegan","df","gf"],en:["Chicha Morada Cooler","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
+ {cat:"andean",c:["#F9A825","#FFF59D"],tags:["vegan","df","gf","imm"],en:["Maracuyá Sour Splash","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Maracuyá Splash","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
+ {cat:"bowls",c:["#6A1B9A","#B39DDB"],tags:["vegan","df","energy"],en:["Açaí Classic Bowl","Açaí, banana and berries topped with granola and coconut.","Açaí|Banana|Berries|Granola|Coconut"],es:["Bowl Clásico de Açaí","Açaí, plátano y frutos rojos con granola y coco.","Açaí|Plátano|Frutos rojos|Granola|Coco"]},
+ {cat:"bowls",c:["#E65100","#FFE0B2"],tags:["veg","energy"],en:["Lúcuma Dream Bowl","Lúcuma, banana and yogurt topped with quinoa pops and honey.","Lúcuma|Banana|Yogurt|Puffed quinoa|Honey"],es:["Bowl Sueño de Lúcuma","Lúcuma, plátano y yogur con quinua pop y miel.","Lúcuma|Plátano|Yogur|Quinua pop|Miel"]},
+ {cat:"snacks",c:["#BF8040","#FFE0A3"],tags:["veg"],en:["Cheese Empanada","Golden baked empanada filled with melted cheese.","Wheat dough|Cheese|Butter"],es:["Empanada de Queso","Empanada horneada rellena de queso derretido.","Masa de trigo|Queso|Mantequilla"]},
+ {cat:"snacks",c:["#8D6E63","#FFE0B2"],tags:["prot"],en:["Beef Empanada","Baked empanada with seasoned beef, onion and olive.","Wheat dough|Beef|Onion|Olive|Egg"],es:["Empanada de Carne","Empanada horneada con carne sazonada, cebolla y aceituna.","Masa de trigo|Carne|Cebolla|Aceituna|Huevo"]},
+ {cat:"wraps",c:["#558B2F","#DCEDC8"],tags:["veg","prot"],en:["Quinoa Veggie Wrap","Quinoa, hummus, greens, tomato and avocado.","Tortilla|Quinoa|Hummus|Greens|Tomato|Avocado"],es:["Wrap Vegetal de Quinua","Quinua, hummus, hojas verdes, tomate y palta.","Tortilla|Quinua|Hummus|Hojas verdes|Tomate|Palta"]},
+ {cat:"wraps",c:["#D84315","#FFCCBC"],tags:["prot","post"],en:["Chicken Ají Sandwich","Grilled chicken with ají amarillo mayo and lettuce.","Bread|Grilled chicken|Ají amarillo mayo|Lettuce|Tomato"],es:["Sándwich de Pollo al Ají","Pollo a la plancha con mayonesa de ají amarillo y lechuga.","Pan|Pollo a la plancha|Mayonesa de ají amarillo|Lechuga|Tomate"]}
+];
+
+/* =====================================================================
+   APP
+   ===================================================================== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let lang = store.get("mishki_lang")==="es" ? "es" : "en";
+let activeCat = null; const activeFilters = new Set();
+const t = k => (I18N[lang][k] ?? I18N.en[k] ?? k);
+
+function cupSVG(c){return `<svg viewBox="0 0 120 160" aria-hidden="true"><path d="M28 34h64l-8 112a8 8 0 0 1-8 7H44a8 8 0 0 1-8-7z" fill="#fff"/><path d="M33 56h54l-6 86a6 6 0 0 1-6 5H45a6 6 0 0 1-6-5z" fill="${c[0]}"/><path d="M33 56h54l-1.5 18h-51z" fill="${c[1]}"/><rect x="20" y="26" width="80" height="12" rx="6" fill="#fff"/><path d="M70 28l14-26" stroke="#6CB33F" stroke-width="6" stroke-linecap="round"/></svg>`}
+
+function applyLang(){
+  document.documentElement.lang = lang;
+  $$("[data-i18n]").forEach(el=>{el.textContent=t(el.dataset.i18n)});
+  $$("[data-i18n-ph]").forEach(el=>{el.placeholder=t(el.dataset.i18nPh)});
+  $$(".lang-switch").forEach(sw=>{sw.dataset.lang=lang;$$("button",sw).forEach(b=>b.setAttribute("aria-pressed",b.dataset.setLang===lang))});
+  document.title = lang==="es" ? "Mishki Juice Bar | Batidos y Jugos Saludables y Deliciosos – Edmonton" : "Mishki Juice Bar | Healthy & Great Tasting Smoothies and Juice – Edmonton";
+  $("#togglePw").textContent = $("#lPass").type==="password" ? t("show") : t("hide");
+  renderCats(); renderFilters(); renderProducts();
+}
+function setLang(l){lang=l;store.set("mishki_lang",l);applyLang()}
+$$("[data-set-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.setLang)));
+
+function renderCats(){
+  $("#cats").innerHTML = CATS.map(c=>`<button class="cat" type="button" data-cat="${c.id}" aria-pressed="${activeCat===c.id}"><span class="ico" style="background:${c.bg}" aria-hidden="true">${c.ico}</span><span>${t("cat_"+c.id)}</span></button>`).join("");
+  $$(".cat").forEach(b=>b.onclick=()=>{activeCat = activeCat===b.dataset.cat?null:b.dataset.cat;renderCats();renderProducts()});
+}
+function renderFilters(){
+  $("#filters").innerHTML = FILTERS.map(f=>`<button class="chip" type="button" data-f="${f}" aria-pressed="${activeFilters.has(f)}">${t("f_"+f)}</button>`).join("")
+   + `<button class="chip clear" type="button" id="clearF">✕ ${t("clear")}</button>`;
+  $$(".chip[data-f]").forEach(b=>b.onclick=()=>{activeFilters.has(b.dataset.f)?activeFilters.delete(b.dataset.f):activeFilters.add(b.dataset.f);renderFilters();renderProducts()});
+  $("#clearF").onclick=()=>{activeFilters.clear();activeCat=null;renderCats();renderFilters();renderProducts()};
+}
+function renderProducts(){
+  const list = P.map((p,i)=>({...p,i})).filter(p=>(!activeCat||p.cat===activeCat)&&[...activeFilters].every(f=>p.tags.includes(f)));
+  $("#products").innerHTML = list.length ? list.map(p=>`
+    <button class="card" type="button" data-p="${p.i}">
+      <div class="pic" style="background:linear-gradient(160deg,${p.c[1]}55,${p.c[1]}22)">
+        <div class="tags">${p.tags.slice(0,2).map(x=>`<span class="tag">${t("f_"+x)}</span>`).join("")}</div>${cupSVG(p.c)}
+      </div>
+      <div class="body"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p></div>
+    </button>`).join("") : `<p class="empty">${t("empty")}</p>`;
+  $$(".card").forEach(c=>c.onclick=()=>openProduct(+c.dataset.p));
+}
+
+/* modals */
+let lastFocus=null;
+function openModal(m){lastFocus=document.activeElement;m.classList.add("open");document.body.style.overflow="hidden";setTimeout(()=>($("input",m)||$(".x",m)).focus(),50)}
+function closeModal(m){m.classList.remove("open");document.body.style.overflow="";lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$$(".modal").forEach(m=>{m.addEventListener("click",e=>{if(e.target===m||e.target.closest("[data-close-modal]"))closeModal(m)})});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$$(".modal.open").forEach(closeModal);closeDrawer()}});
+
+function openProduct(i){
+  const p=P[i], d=p[lang];
+  $("#pdPic").style.background=`linear-gradient(160deg,${p.c[1]}66,${p.c[1]}22)`;
+  $("#pdPic").innerHTML=cupSVG(p.c);
+  $("#pdTitle").textContent=d[0]; $("#pdDesc").textContent=d[1];
+  $("#pdIng").innerHTML=d[2].split("|").map(x=>`<span>${x}</span>`).join("");
+  $("#pdTags").innerHTML=p.tags.map(x=>`<span>✓ ${t("f_"+x)}</span>`).join("");
+  const others=P.map((q,j)=>({q,j})).filter(o=>o.j!==i&&o.q.cat!=="snacks"&&o.q.cat!=="wraps");
+  const pick=[]; while(pick.length<3&&others.length){pick.push(others.splice((i*7+pick.length*5)%others.length,1)[0])}
+  $("#pdAlso").innerHTML=pick.map(o=>`<button type="button" data-p="${o.j}">${cupSVG(o.q.c)}${o.q[lang][0]}</button>`).join("");
+  $$("#pdAlso button").forEach(b=>b.onclick=()=>openProduct(+b.dataset.p));
+  if(!$("#productModal").classList.contains("open")) openModal($("#productModal"));
+}
+
+/* drawer */
+const drawer=$("#drawer"), burger=$(".burger");
+function openDrawer(){drawer.classList.add("open");drawer.setAttribute("aria-hidden","false");burger.setAttribute("aria-expanded","true");document.body.style.overflow="hidden"}
+function closeDrawer(){if(!drawer.classList.contains("open"))return;drawer.classList.remove("open");drawer.setAttribute("aria-hidden","true");burger.setAttribute("aria-expanded","false");document.body.style.overflow=""}
+burger.onclick=openDrawer;
+$$("[data-close-drawer], .drawer a").forEach(el=>el.addEventListener("click",closeDrawer));
+window.addEventListener("resize",()=>{if(innerWidth>1024)closeDrawer()});
+
+/* hero slider (auto-play, swipe, dots) */
+(function(){
+  const track=$(".slides"), slides=$$(".slide"), dots=$(".dots"); let i=0, timer;
+  dots.innerHTML=slides.map((_,k)=>`<button type="button" aria-label="Slide ${k+1}"></button>`).join("");
+  const go=n=>{i=(n+slides.length)%slides.length;track.style.transform=`translateX(-${i*100}%)`;$$("button",dots).forEach((d,k)=>d.setAttribute("aria-current",k===i))};
+  const play=()=>{clearInterval(timer);timer=setInterval(()=>go(i+1),6000)};
+  $$("button",dots).forEach((d,k)=>d.onclick=()=>{go(k);play()});
+  $(".hero .prev").onclick=()=>{go(i-1);play()}; $(".hero .next").onclick=()=>{go(i+1);play()};
+  let x0=null; track.addEventListener("touchstart",e=>x0=e.touches[0].clientX,{passive:true});
+  track.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));play()}x0=null});
+  $(".hero").addEventListener("mouseenter",()=>clearInterval(timer)); $(".hero").addEventListener("mouseleave",play);
+  go(0); play();
+})();
+$$("[data-cat-link]").forEach(a=>a.addEventListener("click",()=>{activeCat=a.dataset.catLink;renderCats();renderProducts()}));
+
+/* toast */
+function toast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),3200)}
+const validEmail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+/* newsletter + contact (front-end only – connect to your email service) */
+$("#newsForm").addEventListener("submit",e=>{e.preventDefault();
+  const ok=$("#nName").value.trim()&&validEmail($("#nEmail").value.trim());
+  $("#newsOk").textContent = ok ? t("news_ok") : t("form_err"); if(ok) e.target.reset();});
+$("#contactForm").addEventListener("submit",e=>{e.preventDefault();
+  const n=$("#cName").value.trim(), m=$("#cEmail").value.trim(), msg=$("#cMsg").value.trim();
+  if(!n||!validEmail(m)||!msg){toast(t("form_err"));return}
+  toast(t("contact_ok"));
+  location.href=`mailto:?subject=${encodeURIComponent("Mishki – "+$("#cTopic").value)}&body=${encodeURIComponent(msg+"\n\n"+n+" <"+m+">")}`;
+  e.target.reset();});
+
+/* =====================================================================
+   INTRANET LOGIN
+   ===================================================================== */
+async function sha256(s){
+  if(window.crypto&&crypto.subtle){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+  // fallback for very old browsers / insecure contexts (simple JS SHA-256)
+  function r(n,x){return(x>>>n)|(x<<(32-n))}const K=[],H=[];let p=2;for(let c=0;c<64;p++){let q=1;for(let d=2;d*d<=p;d++)if(p%d===0){q=0;break}if(q){if(c<8)H[c]=(Math.pow(p,.5)*2**32)|0;K[c++]=(Math.pow(p,1/3)*2**32)|0}}
+  const m=unescape(encodeURIComponent(s)),l=m.length*8,w=[];for(let i=0;i<m.length;i++)w[i>>2]|=m.charCodeAt(i)<<((3-i)%4*8);w[l>>5]|=0x80<<(24-l%32);w[((l+64>>9)<<4)+15]=l;
+  for(let j=0;j<w.length;j+=16){const W=w.slice(j,j+16);let[a,b,c,d,e,f,g,h]=H;for(let i=0;i<64;i++){if(i>15){const x=W[i-15],y=W[i-2];W[i]=(W[i-16]+(r(7,x)^r(18,x)^(x>>>3))+W[i-7]+(r(17,y)^r(19,y)^(y>>>10)))|0}
+  const t1=h+(r(6,e)^r(11,e)^r(25,e))+((e&f)^(~e&g))+K[i]+(W[i]|0),t2=(r(2,a)^r(13,a)^r(22,a))+((a&b)^(a&c)^(b&c));h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0}
+  [a,b,c,d,e,f,g,h].forEach((v,k)=>H[k]=(H[k]+v)|0)}return H.map(v=>(v>>>0).toString(16).padStart(8,"0")).join("")
+}
+window.sha256 = sha256; // helper for generating new hashes in the console
+
+let fails=0, lockedUntil=0;
+$$("[data-open-login]").forEach(b=>b.addEventListener("click",e=>{e.preventDefault();closeDrawer();$("#lErr").textContent="";openModal($("#loginModal"))}));
+$("#togglePw").onclick=()=>{const p=$("#lPass");p.type=p.type==="password"?"text":"password";$("#togglePw").textContent=p.type==="password"?t("show"):t("hide")};
+$("#loginForm").addEventListener("submit",async e=>{
+  e.preventDefault(); const err=$("#lErr");
+  if(Date.now()<lockedUntil){err.textContent=t("l_lock");return}
+  const u=$("#lUser").value.trim().toLowerCase(), p=$("#lPass").value;
+  const h=await sha256(p);
+  if(u && Object.prototype.hasOwnProperty.call(USERS,u) && USERS[u]===h){
+    fails=0; err.textContent=""; toast(t("l_ok"));
+    try{sessionStorage.setItem("mishki_staff",u)}catch(_){}
+    const newTab=$("#lNewTab").checked;
+    setTimeout(()=>{ if(newTab){window.open(INTRANET_URL,"_blank","noopener")} else {location.href=INTRANET_URL}
+      closeModal($("#loginModal")); e.target.reset(); },700);
+  } else {
+    fails++; err.textContent=t("l_err"); $("#lPass").value="";
+    if(fails>=5){lockedUntil=Date.now()+30000;fails=0;err.textContent=t("l_lock")}
+  }
+});
+
+/* misc: reveal on scroll, back-to-top, year */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}}),{threshold:.12});
+$$(".reveal").forEach(el=>io.observe(el));
+const tt=$("#toTop"); addEventListener("scroll",()=>tt.classList.toggle("show",scrollY>600),{passive:true}); tt.onclick=()=>scrollTo({top:0});
+$("#yr").textContent=new Date().getFullYear();
+
+applyLang();
+</script>
+</body>
+</html>
