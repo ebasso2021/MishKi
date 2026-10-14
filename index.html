@@ -166,6 +166,11 @@ section{padding:clamp(56px,8vw,96px) 0}
 .card.future .tag:not(.future){opacity:.6}
 .tag{font-size:.65rem;font-family:var(--head);font-weight:800;text-transform:uppercase;background:#fff;color:var(--green-dk);padding:4px 8px;border-radius:999px}
 .card .body{padding:16px 18px 20px}
+.hb{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:5px}
+.hb li{position:relative;padding-left:20px;font-size:.82rem;line-height:1.35;color:var(--muted)}
+.hb li::before{content:"✓";position:absolute;left:0;top:0;color:#4F7F3A;font-weight:700}
+.pd .hb li{font-size:.9rem}
+.hb-note{font-size:.72rem;color:#9A9A95;margin-top:6px}
 .card h3{font-size:1.05rem;text-transform:uppercase}
 .card p{font-size:.88rem;color:var(--muted);margin-top:6px}
 .empty{text-align:center;color:var(--muted);grid-column:1/-1;padding:40px}
@@ -490,8 +495,8 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
       <div class="wrap">
         <div>
           <span class="eyebrow" data-i18n="h2_eyebrow">Fresh pressed</span>
-          <h2 data-i18n="h2_title">Green power, every day</h2>
-          <p data-i18n="h2_text">Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.</p>
+          <h2 data-i18n="h2_title">Natural juice, every day</h2>
+          <p data-i18n="h2_text">Fruit blends made to order. No shortcuts, just real ingredients.</p>
           <a href="#menu" class="btn btn-orange" data-i18n="cta_juices" data-cat-link="juices">See fresh juices</a>
         </div>
       </div>
@@ -681,7 +686,7 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
       </div>
     </div>
     <div class="legal">
-      <span>© <span id="yr"></span> Mishki Juice Bar · Edmonton, Alberta, Canada · Photos: <a href="https://unsplash.com" target="_blank" rel="noopener" style="text-decoration:underline">Unsplash</a></span>
+      <span>© <span id="yr"></span> Mishki Juice Bar · Edmonton, Alberta, Canada · Photos: <a href="https://unsplash.com" target="_blank" rel="noopener" style="text-decoration:underline">Unsplash</a> &amp; Wikimedia Commons (Lúcuma: Dtarazona, public domain · Chirimoya: Marcelo RosaMelo, CC0 · Granadilla: <a href="https://commons.wikimedia.org/wiki/File:Sweet_granadillas_(Passiflora_ligularis)_-_whole_and_cross_section.jpg" target="_blank" rel="noopener" style="text-decoration:underline">Ivar Leidus</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="text-decoration:underline">CC BY-SA 4.0</a>)</span>
       <nav aria-label="Legal">
         <a href="#" data-i18n="terms">Terms &amp; Conditions</a>
         <a href="#" data-i18n="privacy">Privacy Policy</a>
@@ -702,7 +707,10 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
         <p id="pdDesc" style="color:var(--muted);margin-top:8px"></p>
         <h4 data-i18n="ingredients">Ingredients</h4>
         <div class="ing" id="pdIng"></div>
-        <h4 data-i18n="benefits">Benefits</h4>
+        <h4 data-i18n="hb_title">Health benefits</h4>
+        <ul class="hb" id="pdHb"></ul>
+        <p class="hb-note" data-i18n="hb_note">General nutrition information, not medical advice.</p>
+        <h4 data-i18n="benefits">Dietary info</h4>
         <div class="ing" id="pdTags"></div>
         <a href="#location" class="btn btn-orange" style="margin-top:24px" data-close-modal data-i18n="find_store">Find a store</a>
       </div>
@@ -783,12 +791,12 @@ en:{
  sa_cm_t:"Chicha Morada",sa_cm_1:"Traditional Peruvian drink made from purple corn (maíz morado)",sa_cm_2:"Purple corn is naturally rich in anthocyanins — the antioxidant pigments that give it its deep colour",sa_cm_3:"Prepared with pineapple, cinnamon and clove",
  sa_ma_t:"Maracuyá Juice",sa_ma_1:"Made from passion fruit, a native South American fruit",sa_ma_2:"Contains vitamin C, vitamin A and potassium",sa_ma_3:"Naturally tangy, tropical and refreshing",
  sa_disc:"This information is for general education only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any disease.",
- wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Mishki's AI assistant for juices and South American natural fruit. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"Sarita is an AI assistant. Answers are general information, not medical advice.",ag_more:"Ask me anything else below 👇",ag_ph:"Type your question…",kb_menu:"Right now we serve <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b>. Smoothies, bowls, empanadas and more are coming soon!",kb_vegan:"Both our <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b> are vegan, dairy-free and gluten-friendly.",kb_size:"Our <b>Maracuyá Juice</b> comes in a <b>9 oz</b> cup.",kb_loc:"We're in <b>Edmonton, Alberta</b>. Our exact address and opening hours are coming soon!",kb_price:"Our prices will be announced soon. Stay tuned!",kb_hi:"Hi there! 😊 Ask me about our juices, chicha morada or maracuyá.",kb_thanks:"You're welcome! Enjoy your juice 🍹",kb_fallback:"Good question! I don't have that answer here yet. For anything else, tap the green WhatsApp button next to me and our team will help you.",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
+ wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Mishki's AI assistant for juices and South American natural fruit. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"Sarita is an AI assistant. Answers are general information, not medical advice.",ag_more:"Ask me anything else below 👇",ag_ph:"Type your question…",kb_menu:"Right now we serve <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b>. <b>Lúcuma</b>, <b>Chirimoya</b> and <b>Granadilla</b> juices are coming soon. Smoothies, bowls, empanadas and more are coming soon!",kb_vegan:"Both our <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b> are vegan, dairy-free and gluten-friendly.",kb_size:"Our <b>Maracuyá Juice</b> comes in a <b>9 oz</b> cup.",kb_loc:"We're in <b>Edmonton, Alberta</b>. Our exact address and opening hours are coming soon!",kb_price:"Our prices will be announced soon. Stay tuned!",kb_hi:"Hi there! 😊 Ask me about our juices, chicha morada or maracuyá.",kb_thanks:"You're welcome! Enjoy your juice 🍹",kb_fallback:"Good question! I don't have that answer here yet. For anything else, tap the green WhatsApp button next to me and our team will help you.",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
  promo:"Fresh pressed in Edmonton, every day 🍊",
  nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_contact:"Contact Us",
  intranet:"Intranet",intranet_login:"Staff Intranet Login",
  h1_eyebrow:"New in Edmonton",h1_title:"Taste the sweet side of healthy",h1_text:"Delicious smoothies, fresh pressed juices & good food for people on the go — inspired by Andean superfruits.",
- h2_eyebrow:"Fresh pressed",h2_title:"Green power, every day",h2_text:"Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.",
+ h2_eyebrow:"Fresh pressed",h2_title:"Natural juice, every day",h2_text:"Fruit blends made to order. No shortcuts, just real ingredients.",
  cta_menu:"Discover our menu",cta_juices:"See fresh juices",
  menu_title:"Discover our menu",menu_sub:"Delicious smoothies, fresh pressed juices & good food for people on the go.",
  all:"All",clear:"Deselect all",empty:"No items match these filters.",
@@ -803,7 +811,7 @@ en:{
  news_ok:"Thanks! You're on the list 🎉",contact_ok:"Thanks! Your message is ready to send.",form_err:"Please fill in all fields with a valid email.",
  foot_about:"Healthy & great tasting smoothies and juices, made fresh in Edmonton, Alberta.",stay:"Stay Connected",foot_explore:"Explore",foot_help:"Help",foot_staff:"Staff",
  terms:"Terms & Conditions",privacy:"Privacy Policy",access:"Accessibility Policy",
- ingredients:"Ingredients",benefits:"Benefits",find_store:"Find a store",also:"You may also like",
+ ingredients:"Ingredients",benefits:"Dietary info",hb_title:"Health benefits",hb_note:"General nutrition information, not medical advice.",find_store:"Find a store",also:"You may also like",
  login_title:"Staff Intranet",login_sub:"Sign in to access the Mishki restaurant management app.",l_user:"Username",l_pass:"Password",show:"Show",hide:"Hide",l_newtab:"Open in a new tab",l_btn:"Sign in",
  login_note:"Authorized personnel only. After signing in, the restaurant app opens in a new tab.",l_open:"Open the restaurant app",l_blocked:"Your browser blocked the new tab.",
  l_err:"Invalid username or password.",l_ok:"Welcome! Redirecting to the intranet…",l_lock:"Too many attempts. Please wait 30 seconds.",
@@ -816,12 +824,12 @@ es:{
  sa_cm_t:"Chicha Morada",sa_cm_1:"Bebida tradicional peruana hecha de maíz morado",sa_cm_2:"El maíz morado es naturalmente rico en antocianinas, los pigmentos antioxidantes que le dan su color intenso",sa_cm_3:"Preparada con piña, canela y clavo de olor",
  sa_ma_t:"Jugo de Maracuyá",sa_ma_1:"Hecho de maracuyá, una fruta nativa de Sudamérica",sa_ma_2:"Contiene vitamina C, vitamina A y potasio",sa_ma_3:"Naturalmente ácido, tropical y refrescante",
  sa_disc:"Esta información es solo educativa. No es consejo médico y no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad.",
- wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 la asistente con IA de Mishki, especialista en jugos y frutas naturales de Sudamérica. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Sarita es una asistente con IA. Sus respuestas son información general, no consejo médico.",ag_more:"Pregúntame lo que quieras aquí abajo 👇",ag_ph:"Escribe tu pregunta…",kb_menu:"Por ahora tenemos <b>Jugo de Maracuyá</b> y <b>Jugo de Chicha Morada</b>. ¡Batidos, bowls, empanadas y más muy pronto!",kb_vegan:"Nuestro <b>Jugo de Maracuyá</b> y nuestro <b>Jugo de Chicha Morada</b> son veganos, sin lácteos y sin gluten.",kb_size:"Nuestro <b>Jugo de Maracuyá</b> viene en vaso de <b>9 oz</b>.",kb_loc:"Estamos en <b>Edmonton, Alberta</b>. ¡La dirección exacta y el horario se anunciarán pronto!",kb_price:"Los precios se anunciarán muy pronto. ¡Atento!",kb_hi:"¡Hola! 😊 Pregúntame sobre nuestros jugos, la chicha morada o el maracuyá.",kb_thanks:"¡De nada! Disfruta tu jugo 🍹",kb_fallback:"¡Buena pregunta! Todavía no tengo esa respuesta aquí. Para cualquier otra consulta, toca el botón verde de WhatsApp a mi lado y nuestro equipo te ayudará.",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
+ wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 la asistente con IA de Mishki, especialista en jugos y frutas naturales de Sudamérica. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Sarita es una asistente con IA. Sus respuestas son información general, no consejo médico.",ag_more:"Pregúntame lo que quieras aquí abajo 👇",ag_ph:"Escribe tu pregunta…",kb_menu:"Por ahora tenemos <b>Jugo de Maracuyá</b> y <b>Jugo de Chicha Morada</b>. Los jugos de <b>Lúcuma</b>, <b>Chirimoya</b> y <b>Granadilla</b> llegarán muy pronto. ¡Batidos, bowls, empanadas y más muy pronto!",kb_vegan:"Nuestro <b>Jugo de Maracuyá</b> y nuestro <b>Jugo de Chicha Morada</b> son veganos, sin lácteos y sin gluten.",kb_size:"Nuestro <b>Jugo de Maracuyá</b> viene en vaso de <b>9 oz</b>.",kb_loc:"Estamos en <b>Edmonton, Alberta</b>. ¡La dirección exacta y el horario se anunciarán pronto!",kb_price:"Los precios se anunciarán muy pronto. ¡Atento!",kb_hi:"¡Hola! 😊 Pregúntame sobre nuestros jugos, la chicha morada o el maracuyá.",kb_thanks:"¡De nada! Disfruta tu jugo 🍹",kb_fallback:"¡Buena pregunta! Todavía no tengo esa respuesta aquí. Para cualquier otra consulta, toca el botón verde de WhatsApp a mi lado y nuestro equipo te ayudará.",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
  promo:"Recién exprimido en Edmonton, todos los días 🍊",
  nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_contact:"Contáctanos",
  intranet:"Intranet",intranet_login:"Acceso Intranet Personal",
  h1_eyebrow:"Nuevo en Edmonton",h1_title:"Prueba el lado dulce de lo saludable",h1_text:"Deliciosos batidos, jugos recién exprimidos y buena comida para llevar — inspirados en las superfrutas andinas.",
- h2_eyebrow:"Recién exprimido",h2_title:"Poder verde, todos los días",h2_text:"Jugos verdes prensados en frío y mezclas de frutas hechas al momento. Sin atajos, solo ingredientes reales.",
+ h2_eyebrow:"Recién exprimido",h2_title:"Jugo natural, todos los días",h2_text:"Mezclas de frutas hechas al momento. Sin atajos, solo ingredientes reales.",
  cta_menu:"Descubre nuestro menú",cta_juices:"Ver jugos frescos",
  menu_title:"Descubre nuestro menú",menu_sub:"Deliciosos batidos, jugos recién exprimidos y buena comida para llevar.",
  all:"Todo",clear:"Quitar filtros",empty:"Ningún producto coincide con estos filtros.",
@@ -836,7 +844,7 @@ es:{
  news_ok:"¡Gracias! Ya estás en la lista 🎉",contact_ok:"¡Gracias! Tu mensaje está listo para enviarse.",form_err:"Completa todos los campos con un correo válido.",
  foot_about:"Batidos y jugos saludables y deliciosos, hechos al momento en Edmonton, Alberta.",stay:"Síguenos",foot_explore:"Explorar",foot_help:"Ayuda",foot_staff:"Personal",
  terms:"Términos y Condiciones",privacy:"Política de Privacidad",access:"Política de Accesibilidad",
- ingredients:"Ingredientes",benefits:"Beneficios",find_store:"Buscar tienda",also:"También te puede gustar",
+ ingredients:"Ingredientes",benefits:"Información dietética",hb_title:"Beneficios saludables",hb_note:"Información nutricional general, no es consejo médico.",find_store:"Buscar tienda",also:"También te puede gustar",
  login_title:"Intranet del Personal",login_sub:"Inicia sesión para acceder a la app de gestión del restaurante Mishki.",l_user:"Usuario",l_pass:"Contraseña",show:"Ver",hide:"Ocultar",l_newtab:"Abrir en una pestaña nueva",l_btn:"Iniciar sesión",
  login_note:"Solo personal autorizado. Al iniciar sesión, la app del restaurante se abrirá en una pestaña nueva.",l_open:"Abrir la app del restaurante",l_blocked:"Tu navegador bloqueó la pestaña nueva.",
  l_err:"Usuario o contraseña incorrectos.",l_ok:"¡Bienvenido! Redirigiendo a la intranet…",l_lock:"Demasiados intentos. Espera 30 segundos.",
@@ -853,10 +861,11 @@ const CATS=[
  {id:"andean",ico:"🏔️",bg:"#EFE2F7"}];
 const FILTERS=["vegan","veg","prot","df","gf","imm","post","energy"];
 const P=[
- {img:"1600271886742-f049cd451bba",cat:"juices",c:["#F8A34C","#FFDBA6"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
- {img:"1628751584748-0d780bad3f06",cat:"juices",c:["#6DA470","#D6EAC0"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
- {img:"images/chicha.jpg",active:true,cat:"juices",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Juice","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Jugo de Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
- {img:"images/maracuya.jpg",active:true,cat:"juices",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Juice","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Jugo de Maracuyá","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
+ {img:"images/lucuma.jpg",active:true,soon:true,cat:"juices",c:["#E9A447","#F7D9A0"],tags:["vegan","df","gf"],en:["Lúcuma Juice","Peruvian lúcuma, the Andean fruit with a naturally sweet, caramel-like flavour.","Lúcuma"],es:["Jugo de Lúcuma","Lúcuma peruana, la fruta andina de sabor naturalmente dulce, parecido al caramelo.","Lúcuma"],hb:{en:"Contains beta-carotene and polyphenols, natural antioxidants|Source of fibre, which supports digestion|Provides niacin (vitamin B3) and potassium",es:"Contiene betacaroteno y polifenoles, antioxidantes naturales|Fuente de fibra, que favorece la digestión|Aporta niacina (vitamina B3) y potasio"}},
+ {img:"images/chirimoya.jpg",active:true,soon:true,cat:"juices",c:["#D9D5B0","#F4F1DE"],tags:["vegan","df","gf"],en:["Chirimoya Juice","Creamy, sweet chirimoya (cherimoya), a fruit native to the Andes.","Chirimoya"],es:["Jugo de Chirimoya","Chirimoya cremosa y dulce, fruta originaria de los Andes.","Chirimoya"],hb:{en:"Source of vitamin C, which supports the immune system|Provides vitamin B6 and potassium|Contains fibre, which supports digestion",es:"Fuente de vitamina C, que apoya el sistema inmune|Aporta vitamina B6 y potasio|Contiene fibra, que favorece la digestión"}},
+ {img:"images/granadilla.jpg",active:true,soon:true,cat:"juices",c:["#F2A42C","#FFF0C2"],tags:["vegan","df","gf"],en:["Granadilla Juice","Sweet granadilla, the mild, fragrant cousin of passion fruit.","Granadilla"],es:["Jugo de Granadilla","Granadilla dulce, la prima suave y aromática del maracuyá.","Granadilla"],hb:{en:"Source of vitamin C, an antioxidant that supports the immune system|Provides potassium|Contains niacin (vitamin B3)",es:"Fuente de vitamina C, antioxidante que apoya el sistema inmune|Aporta potasio|Contiene niacina (vitamina B3)"}},
+ {img:"images/chicha.jpg",active:true,cat:"juices",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Juice","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Jugo de Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"],hb:{en:"Purple corn is rich in anthocyanins, natural antioxidants|Pineapple and lime add vitamin C|Naturally caffeine-free",es:"El maíz morado es rico en antocianinas, antioxidantes naturales|La piña y el limón aportan vitamina C|Naturalmente sin cafeína"}},
+ {img:"images/maracuya.jpg",active:true,cat:"juices",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Juice","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Jugo de Maracuyá","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"],hb:{en:"Rich in vitamin A, important for healthy eyes and skin|Source of vitamin C, an antioxidant that supports the immune system|Contains potassium",es:"Rico en vitamina A, importante para la vista y la piel|Fuente de vitamina C, antioxidante que apoya el sistema inmune|Contiene potasio"}},
 ];
 
 /* =====================================================================
@@ -871,7 +880,7 @@ const t = k => (I18N[lang][k] ?? I18N.en[k] ?? k);
 const ph=(id,w)=>(id.startsWith("images/")||id.startsWith("http"))?id:`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
 const CAT_IMG={juices:"images/maracuya.jpg"};
 const catImg=id=>CAT_IMG[id]||(P.find(p=>p.cat===id&&p.active)||P.find(p=>p.cat===id)||{img:"images/chicha.jpg"}).img;
-const ORDER=["images/maracuya.jpg","images/chicha.jpg"];
+const ORDER=["images/maracuya.jpg","images/chicha.jpg","images/lucuma.jpg","images/chirimoya.jpg","images/granadilla.jpg"];
 const rank=p=>p.active?ORDER.indexOf(p.img):(p.cat==="juices"?10:20);
 function cupSVG(c){return `<svg viewBox="0 0 120 160" aria-hidden="true"><path d="M28 34h64l-8 112a8 8 0 0 1-8 7H44a8 8 0 0 1-8-7z" fill="#fff"/><path d="M33 56h54l-6 86a6 6 0 0 1-6 5H45a6 6 0 0 1-6-5z" fill="${c[0]}"/><path d="M33 56h54l-1.5 18h-51z" fill="${c[1]}"/><rect x="20" y="26" width="80" height="12" rx="6" fill="#fff"/><path d="M70 28l14-26" stroke="#6CB33F" stroke-width="6" stroke-linecap="round"/></svg>`}
 
@@ -906,9 +915,9 @@ function renderProducts(){
   $("#products").innerHTML = list.length ? list.map(p=>`
     <button class="card${!p.active?" future":""}" type="button" data-p="${p.i}">
       <div class="pic" style="background:linear-gradient(160deg,${p.c[1]}55,${p.c[1]}22)">
-        <div class="tags">${!p.active?`<span class="tag future">${t("future")}</span>`:""}${p.tags.slice(0,2).map(x=>`<span class="tag">${t("f_"+x)}</span>`).join("")}</div><img src="${ph(p.img,600)}" alt="${p[lang][0]}" loading="lazy">${p.ov?`<img class="ov" src="${p.ov}" alt="" aria-hidden="true">`:""}
+        <div class="tags">${(!p.active||p.soon)?`<span class="tag future">${t("future")}</span>`:""}${p.tags.slice(0,2).map(x=>`<span class="tag">${t("f_"+x)}</span>`).join("")}</div><img src="${ph(p.img,600)}" alt="${p[lang][0]}" loading="lazy">${p.ov?`<img class="ov" src="${p.ov}" alt="" aria-hidden="true">`:""}
       </div>
-      <div class="body"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p></div>
+      <div class="body"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p>${p.hb?`<ul class="hb">${p.hb[lang].split("|").map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</div>
     </button>`).join("") : `<p class="empty">${activeCat&&activeCat!=="juices"&&!activeFilters.size?t("future")+" 🍹":t("empty")}</p>`;
   $$(".card").forEach(c=>c.onclick=()=>openProduct(+c.dataset.p));
 }
@@ -962,7 +971,8 @@ function openProduct(i){
   $("#pdPic").innerHTML=`<img src="${ph(p.img,900)}" alt="${d[0]}">${p.ov?`<img class="ov" src="${p.ov}" alt="" aria-hidden="true">`:""}`;
   $("#pdTitle").textContent=d[0]; $("#pdDesc").textContent=d[1];
   $("#pdIng").innerHTML=d[2].split("|").map(x=>`<span>${x}</span>`).join("");
-  $("#pdTags").innerHTML=(!p.active?`<span class="tag future">${t("future")}</span>`:"")+p.tags.map(x=>`<span>✓ ${t("f_"+x)}</span>`).join("");
+  $("#pdHb").innerHTML=p.hb?p.hb[lang].split("|").map(x=>`<li>${x}</li>`).join(""):"";
+  $("#pdTags").innerHTML=((!p.active||p.soon)?`<span class="tag future">${t("future")}</span>`:"")+p.tags.map(x=>`<span>✓ ${t("f_"+x)}</span>`).join("");
   const others=P.map((q,j)=>({q,j})).filter(o=>o.j!==i&&o.q.cat!=="snacks"&&o.q.cat!=="wraps");
   const pick=[]; while(pick.length<3&&others.length){pick.push(others.splice((i*7+pick.length*5)%others.length,1)[0])}
   $("#pdAlso").innerHTML=pick.map(o=>`<button type="button" data-p="${o.j}"><img src="${ph(o.q.img,300)}" alt="" loading="lazy">${o.q[lang][0]}</button>`).join("");
