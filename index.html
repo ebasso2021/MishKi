@@ -108,7 +108,6 @@ nav.main a:hover::after{width:100%}
 .slide .eyebrow{display:inline-block;font-family:var(--head);font-weight:800;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.6);margin-bottom:16px}
 .s1{background:linear-gradient(90deg,rgba(249,217,181,.96) 0%,rgba(249,217,181,.88) 42%,rgba(249,217,181,.15) 78%),url("https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=1600&q=70") center/cover no-repeat;color:#3B2A1C}
 .s2{background:linear-gradient(90deg,rgba(211,230,195,.96) 0%,rgba(211,230,195,.88) 42%,rgba(211,230,195,.15) 78%),url("https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=1600&q=70") center/cover no-repeat;color:#2F4426}
-.s3{background:linear-gradient(90deg,rgba(235,203,215,.96) 0%,rgba(235,203,215,.88) 42%,rgba(235,203,215,.15) 78%),url("https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1600&q=70") center/cover no-repeat;color:#3E2C4A}
 .hero-art{justify-self:center;width:min(420px,80%);filter:drop-shadow(0 25px 40px rgba(0,0,0,.25));animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-14px) rotate(-2deg)}}
 .hero .ctrl{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--ink);font-size:1.4rem;box-shadow:var(--shadow);z-index:2}
@@ -180,24 +179,6 @@ section{padding:clamp(56px,8vw,96px) 0}
 .list-check li{padding-left:32px;position:relative;margin:10px 0;font-weight:600}
 .list-check li::before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-size:.75rem;display:grid;place-items:center}
 
-/* loyalty band */
-.band{background:#FBE6D4;color:#3B2A1C;position:relative;overflow:hidden}
-.band .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
-.band h2{font-size:clamp(1.8rem,3.6vw,2.8rem);text-transform:uppercase}
-.band p{opacity:.95;margin:12px 0 24px;max-width:560px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
-.step{background:rgba(255,255,255,.65);border-radius:16px;padding:16px;text-align:center}
-.step b{display:block;font-family:var(--head);font-size:1.8rem}
-.step span{font-size:.82rem}
-.card-mock{aspect-ratio:1.6/1;border-radius:22px;background:linear-gradient(135deg,#fff 0%,#FFF8F0 100%);color:var(--ink);padding:24px;box-shadow:0 24px 50px rgba(60,40,20,.15);transform:rotate(-6deg);display:flex;flex-direction:column;justify-content:space-between;max-width:380px;justify-self:center;width:100%}
-.card-mock .logo{font-size:1.4rem}
-.card-mock .num{font-family:monospace;letter-spacing:.2em;color:var(--muted)}
-
-/* gift cards */
-.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.gift{border-radius:22px;aspect-ratio:1.6/1;padding:22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);transition:transform .25s}
-.gift:hover{transform:translateY(-6px) rotate(-1deg)}
-.gift h3{font-size:1.2rem;text-transform:uppercase}
 
 /* location */
 .loc{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:stretch}
@@ -368,18 +349,16 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
   .head-actions .lang-switch{display:none}
   .cats{grid-template-columns:repeat(4,1fr);gap:12px}
   .foot-grid{grid-template-columns:1fr 1fr}
-  .gifts{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:820px){
   .slide .wrap{grid-template-columns:1fr;text-align:center;padding-top:30px;padding-bottom:70px}
   .slide p{margin-left:auto;margin-right:auto}
   .slide{min-height:520px}
-  .s1,.s2,.s3{background-position:center}
+  .s1,.s2{background-position:center}
   .s1{box-shadow:inset 0 0 0 2000px rgba(249,217,181,.72)}
   .s2{box-shadow:inset 0 0 0 2000px rgba(211,230,195,.72)}
-  .s3{box-shadow:inset 0 0 0 2000px rgba(235,203,215,.72)}
   .hero .ctrl{display:none}
-  .split,.band .wrap,.loc{grid-template-columns:1fr}
+  .split,.loc{grid-template-columns:1fr}
   .split .art{min-height:260px}
   .split.rev .art{order:-1}
   .pd{grid-template-columns:1fr}
@@ -400,10 +379,8 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
   .card .body{padding:12px}
   .card h3{font-size:.85rem}
   .card p{display:none}
-  .gifts{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
   .contact-form{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
   .also .row{grid-template-columns:repeat(3,1fr)}
   .btn{padding:13px 22px}
   .news form{flex-direction:column}
@@ -454,8 +431,6 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
         <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
         <li><a href="#location" data-i18n="nav_loc">Find a Location</a></li>
         <li><a href="#about" data-i18n="nav_about">About Us</a></li>
-        <li><a href="#loyalty" data-i18n="nav_loyalty">Loyalty</a></li>
-        <li><a href="#gift" data-i18n="nav_gift">Gift Cards</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
       </ul>
     </nav>
@@ -486,8 +461,6 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
       <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
       <li><a href="#location" data-i18n="nav_loc">Find a Location</a></li>
       <li><a href="#about" data-i18n="nav_about">About Us</a></li>
-      <li><a href="#loyalty" data-i18n="nav_loyalty">Loyalty</a></li>
-      <li><a href="#gift" data-i18n="nav_gift">Gift Cards</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact Us</a></li>
     </ul>
     <div class="lang-switch" data-lang="en" role="group" aria-label="Language / Idioma" style="margin-top:24px;align-self:flex-start">
@@ -503,7 +476,7 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
 <!-- ================= HERO ================= -->
 <section class="hero" style="padding:0" aria-roledescription="carousel" aria-label="Highlights">
   <div class="slides">
-    <div class="slide s1" role="group" aria-roledescription="slide" aria-label="1 / 3">
+    <div class="slide s1" role="group" aria-roledescription="slide" aria-label="1 / 2">
       <div class="wrap">
         <div>
           <span class="eyebrow" data-i18n="h1_eyebrow">New in Edmonton</span>
@@ -513,23 +486,13 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
         </div>
       </div>
     </div>
-    <div class="slide s2" role="group" aria-roledescription="slide" aria-label="2 / 3">
+    <div class="slide s2" role="group" aria-roledescription="slide" aria-label="2 / 2">
       <div class="wrap">
         <div>
           <span class="eyebrow" data-i18n="h2_eyebrow">Fresh pressed</span>
           <h2 data-i18n="h2_title">Green power, every day</h2>
           <p data-i18n="h2_text">Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.</p>
           <a href="#menu" class="btn btn-orange" data-i18n="cta_juices" data-cat-link="juices">See fresh juices</a>
-        </div>
-      </div>
-    </div>
-    <div class="slide s3" role="group" aria-roledescription="slide" aria-label="3 / 3">
-      <div class="wrap">
-        <div>
-          <span class="eyebrow" data-i18n="h3_eyebrow">Mishki Rewards</span>
-          <h2 data-i18n="h3_title">Sip, earn &amp; get rewarded</h2>
-          <p data-i18n="h3_text">Join our loyalty program and collect points on every smoothie, juice and bowl.</p>
-          <a href="#loyalty" class="btn btn-orange" data-i18n="cta_join">Join now</a>
         </div>
       </div>
     </div>
@@ -548,8 +511,6 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
       <p data-i18n="menu_sub">Delicious smoothies, fresh pressed juices &amp; good food for people on the go.</p>
     </div>
 
-    <div class="cats reveal" id="cats"></div>
-    <div class="filters" id="filters"></div>
     <div class="products" id="products" aria-live="polite"></div>
   </div>
 </section>
@@ -581,7 +542,6 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
       <h3>Sarita <span class="ai-chip">AI</span></h3>
       <p class="role" data-i18n="sa_role">AI juice &amp; natural fruit specialist</p>
       <div class="badges">
-        <span><i class="flag it"></i><i class="flag pe"></i> <b data-i18n="sa_b1" style="font-weight:600">Italian-Peruvian</b></span>
         <span data-i18n="sa_b2">🤖 AI assistant</span>
         <span data-i18n="sa_b3">🌎 South American superfruits</span>
       </div>
@@ -589,7 +549,7 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
     </div>
     <div>
       <h2 data-i18n="sa_title">Meet Sarita, our AI juice expert</h2>
-      <p class="lead" data-i18n="sa_lead">Sarita is Mishki\'s AI assistant, with an Italian-Peruvian personality. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Ask her anything — tap the Sarita button at the bottom right of the screen.</p>
+      <p class="lead" data-i18n="sa_lead">Sarita is Mishki\'s AI assistant. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Ask her anything — tap the Sarita button at the bottom right of the screen.</p>
       <div class="benefits">
         <article class="benefit">
           <div class="ph" style="background-image:url('images/chicha.jpg');background-size:contain;background-repeat:no-repeat;background-color:#E8ECEE"></div>
@@ -615,41 +575,6 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
         </article>
       </div>
       <p class="disclaimer" data-i18n="sa_disc">This information is for general education only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any disease.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= LOYALTY ================= -->
-<section id="loyalty" class="band">
-  <div class="wrap reveal">
-    <div>
-      <h2 data-i18n="loy_title">Mishki Rewards</h2>
-      <p data-i18n="loy_text">Earn points with every purchase and redeem them for free drinks, birthday treats and member-only offers.</p>
-      <div class="steps">
-        <div class="step"><b>1</b><span data-i18n="loy_s1">Sign up for free</span></div>
-        <div class="step"><b>2</b><span data-i18n="loy_s2">Earn points on every order</span></div>
-        <div class="step"><b>3</b><span data-i18n="loy_s3">Redeem tasty rewards</span></div>
-      </div>
-      <a href="#contact" class="btn btn-green" style="margin-top:24px" data-i18n="cta_join">Join now</a>
-    </div>
-    <div class="card-mock" aria-hidden="true">
-      <span class="logo" style="color:var(--green-dk)">Mishki<span class="dot">.</span><small>REWARDS</small></span>
-      <span class="num">•••• •••• •••• 2026</span>
-    </div>
-  </div>
-</section>
-
-<!-- ================= GIFT CARDS ================= -->
-<section id="gift">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 data-i18n="gift_title">Gift Cards</h2>
-      <p data-i18n="gift_sub">The perfect gift for every occasion. Available in store.</p>
-    </div>
-    <div class="gifts reveal">
-      <div class="gift" style="background:linear-gradient(135deg,#F2B48A,#F5D88A);color:#3B2A1C"><h3 data-i18n="gift_1">Thank you!</h3><span class="logo" style="color:inherit">Mishki.</span></div>
-      <div class="gift" style="background:linear-gradient(135deg,#9CC487,#C9E0B6);color:#2F4426"><h3 data-i18n="gift_2">Happy Birthday!</h3><span class="logo" style="color:inherit">Mishki.</span></div>
-      <div class="gift" style="background:linear-gradient(135deg,#B9A3D1,#E3B5C6);color:#3E2C4A"><h3 data-i18n="gift_3">Stay Fresh!</h3><span class="logo" style="color:inherit">Mishki.</span></div>
     </div>
   </div>
 </section>
@@ -738,8 +663,6 @@ img.ov{object-fit:cover!important;background:none!important;pointer-events:none}
         <ul>
           <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
           <li><a href="#about" data-i18n="nav_about">About Us</a></li>
-          <li><a href="#loyalty" data-i18n="nav_loyalty">Loyalty</a></li>
-          <li><a href="#gift" data-i18n="nav_gift">Gift Cards</a></li>
         </ul>
       </div>
       <div>
@@ -855,28 +778,24 @@ const USERS = {
    ===================================================================== */
 const I18N = {
 en:{
- sa_role:"AI juice & natural fruit specialist",sa_b1:"Italian-Peruvian personality",sa_b2:"🤖 AI assistant",sa_b3:"🌎 South American superfruits",sa_cta:"Ask Sarita",
- sa_title:"Meet Sarita, our AI juice expert",sa_lead:"Sarita is Mishki's AI assistant, with an Italian-Peruvian personality. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Ask her anything — tap the Sarita button at the bottom right of the screen.",
+ sa_role:"AI juice & natural fruit specialist",sa_b2:"🤖 AI assistant",sa_b3:"🌎 South American superfruits",sa_cta:"Ask Sarita",
+ sa_title:"Meet Sarita, our AI juice expert",sa_lead:"Sarita is Mishki's AI assistant. She knows the natural products of South America and can explain what goes into every glass — like chicha morada and maracuyá juice. Ask her anything — tap the Sarita button at the bottom right of the screen.",
  sa_cm_t:"Chicha Morada",sa_cm_1:"Traditional Peruvian drink made from purple corn (maíz morado)",sa_cm_2:"Purple corn is naturally rich in anthocyanins — the antioxidant pigments that give it its deep colour",sa_cm_3:"Prepared with pineapple, cinnamon and clove",
  sa_ma_t:"Maracuyá Juice",sa_ma_1:"Made from passion fruit, a native South American fruit",sa_ma_2:"Contains vitamin C, vitamin A and potassium",sa_ma_3:"Naturally tangy, tropical and refreshing",
  sa_disc:"This information is for general education only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any disease.",
  wa_float:"Sarita",ag_hello:"Hi! I'm Sarita 👋 Mishki's AI assistant for juices and South American natural fruit. What would you like to know?",ag_q1:"Benefits of Chicha Morada",ag_q2:"Benefits of Maracuyá Juice",ag_wa:"Continue on WhatsApp",ag_note:"Sarita is an AI assistant. Answers are general information, not medical advice.",ag_more:"Ask me anything else below 👇",ag_ph:"Type your question…",kb_menu:"Right now we serve <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b>. Smoothies, bowls, empanadas and more are coming soon!",kb_vegan:"Both our <b>Maracuyá Juice</b> and <b>Chicha Morada Juice</b> are vegan, dairy-free and gluten-friendly.",kb_size:"Our <b>Maracuyá Juice</b> comes in a <b>9 oz</b> cup.",kb_loc:"We're in <b>Edmonton, Alberta</b>. Our exact address and opening hours are coming soon!",kb_price:"Our prices will be announced soon. Stay tuned!",kb_hi:"Hi there! 😊 Ask me about our juices, chicha morada or maracuyá.",kb_thanks:"You're welcome! Enjoy your juice 🍹",kb_fallback:"Good question! I don't have that answer here yet. For anything else, tap the green WhatsApp button next to me and our team will help you.",wa_msg:"Hi Sarita! I'd like to know more about the benefits of chicha morada and maracuyá juice.",
  promo:"Fresh pressed in Edmonton, every day 🍊",
- nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_loyalty:"Loyalty",nav_gift:"Gift Cards",nav_contact:"Contact Us",
+ nav_menu:"Our Menu",nav_loc:"Find a Location",nav_about:"About Us",nav_contact:"Contact Us",
  intranet:"Intranet",intranet_login:"Staff Intranet Login",
  h1_eyebrow:"New in Edmonton",h1_title:"Taste the sweet side of healthy",h1_text:"Delicious smoothies, fresh pressed juices & good food for people on the go — inspired by Andean superfruits.",
  h2_eyebrow:"Fresh pressed",h2_title:"Green power, every day",h2_text:"Cold-pressed greens and fruit blends made to order. No shortcuts, just real ingredients.",
- h3_eyebrow:"Mishki Rewards",h3_title:"Sip, earn & get rewarded",h3_text:"Join our loyalty program and collect points on every smoothie, juice and bowl.",
- cta_menu:"Discover our menu",cta_juices:"See fresh juices",cta_join:"Join now",
+ cta_menu:"Discover our menu",cta_juices:"See fresh juices",
  menu_title:"Discover our menu",menu_sub:"Delicious smoothies, fresh pressed juices & good food for people on the go.",
  all:"All",clear:"Deselect all",empty:"No items match these filters.",
  about_title:"Made fresh. Made with love.",
  about_p1:"\"Mishki\" means \"sweet\" in Quechua. We blend the vibrant superfruits of the Andes — maracuyá, lúcuma, camu camu, purple corn — with Canadian favourites to create drinks that taste as good as they make you feel.",
  about_p2:"Every smoothie, juice and bowl is made to order right here in Edmonton.",
  about_l1:"Real fruit and vegetables, prepared daily",about_l2:"Vegan, dairy-free and gluten-friendly options",about_l3:"Proudly local and community-minded",
- loy_title:"Mishki Rewards",loy_text:"Earn points with every purchase and redeem them for free drinks, birthday treats and member-only offers.",
- loy_s1:"Sign up for free",loy_s2:"Earn points on every order",loy_s3:"Redeem tasty rewards",
- gift_title:"Gift Cards",gift_sub:"The perfect gift for every occasion. Available in store.",gift_1:"Thank you!",gift_2:"Happy Birthday!",gift_3:"Stay Fresh!",
  loc_title:"Find a Location",loc_sub:"Come visit us in Edmonton, Alberta.",loc_addr:"Address",loc_addr_v:"Edmonton, AB, Canada (exact address coming soon)",loc_hours:"Hours",loc_hours_v:"To be announced",loc_phone:"Phone",loc_dir:"Get directions",
  contact_title:"Contact Us",contact_text:"Questions, catering, feedback or partnership ideas? Send us a message and our team will get back to you.",
  f_name:"Full name",f_email:"Email",f_topic:"Topic",f_msg:"Message",t_general:"General question",t_catering:"Catering",t_feedback:"Feedback",t_jobs:"Careers",send:"Send",
@@ -892,28 +811,24 @@ en:{
  f_vegan:"Vegan",f_veg:"Vegetarian",f_prot:"Protein",f_df:"Dairy Free",f_gf:"Gluten Friendly",f_imm:"Immunity",f_post:"Post-workout",f_energy:"Energy"
 },
 es:{
- sa_role:"Especialista virtual (IA) en jugos y frutas naturales",sa_b1:"Personalidad ítalo-peruana",sa_b2:"🤖 Asistente con IA",sa_b3:"🌎 Superfrutas de Sudamérica",sa_cta:"Pregúntale a Sarita",
- sa_title:"Conoce a Sarita, nuestra experta virtual en jugos",sa_lead:"Sarita es la asistente con inteligencia artificial de Mishki, con personalidad ítalo-peruana. Conoce los productos naturales de Sudamérica y te explica qué lleva cada vaso — como la chicha morada y el jugo de maracuyá. Pregúntale lo que quieras con el botón de Sarita abajo a la derecha de la pantalla.",
+ sa_role:"Especialista virtual (IA) en jugos y frutas naturales",sa_b2:"🤖 Asistente con IA",sa_b3:"🌎 Superfrutas de Sudamérica",sa_cta:"Pregúntale a Sarita",
+ sa_title:"Conoce a Sarita, nuestra experta virtual en jugos",sa_lead:"Sarita es la asistente con inteligencia artificial de Mishki. Conoce los productos naturales de Sudamérica y te explica qué lleva cada vaso — como la chicha morada y el jugo de maracuyá. Pregúntale lo que quieras con el botón de Sarita abajo a la derecha de la pantalla.",
  sa_cm_t:"Chicha Morada",sa_cm_1:"Bebida tradicional peruana hecha de maíz morado",sa_cm_2:"El maíz morado es naturalmente rico en antocianinas, los pigmentos antioxidantes que le dan su color intenso",sa_cm_3:"Preparada con piña, canela y clavo de olor",
  sa_ma_t:"Jugo de Maracuyá",sa_ma_1:"Hecho de maracuyá, una fruta nativa de Sudamérica",sa_ma_2:"Contiene vitamina C, vitamina A y potasio",sa_ma_3:"Naturalmente ácido, tropical y refrescante",
  sa_disc:"Esta información es solo educativa. No es consejo médico y no pretende diagnosticar, tratar, curar ni prevenir ninguna enfermedad.",
  wa_float:"Sarita",ag_hello:"¡Hola! Soy Sarita 👋 la asistente con IA de Mishki, especialista en jugos y frutas naturales de Sudamérica. ¿Qué te gustaría saber?",ag_q1:"Beneficios de la Chicha Morada",ag_q2:"Beneficios del Jugo de Maracuyá",ag_wa:"Seguir por WhatsApp",ag_note:"Sarita es una asistente con IA. Sus respuestas son información general, no consejo médico.",ag_more:"Pregúntame lo que quieras aquí abajo 👇",ag_ph:"Escribe tu pregunta…",kb_menu:"Por ahora tenemos <b>Jugo de Maracuyá</b> y <b>Jugo de Chicha Morada</b>. ¡Batidos, bowls, empanadas y más muy pronto!",kb_vegan:"Nuestro <b>Jugo de Maracuyá</b> y nuestro <b>Jugo de Chicha Morada</b> son veganos, sin lácteos y sin gluten.",kb_size:"Nuestro <b>Jugo de Maracuyá</b> viene en vaso de <b>9 oz</b>.",kb_loc:"Estamos en <b>Edmonton, Alberta</b>. ¡La dirección exacta y el horario se anunciarán pronto!",kb_price:"Los precios se anunciarán muy pronto. ¡Atento!",kb_hi:"¡Hola! 😊 Pregúntame sobre nuestros jugos, la chicha morada o el maracuyá.",kb_thanks:"¡De nada! Disfruta tu jugo 🍹",kb_fallback:"¡Buena pregunta! Todavía no tengo esa respuesta aquí. Para cualquier otra consulta, toca el botón verde de WhatsApp a mi lado y nuestro equipo te ayudará.",wa_msg:"¡Hola Sarita! Me gustaría saber más sobre los beneficios de la chicha morada y el jugo de maracuyá.",
  promo:"Recién exprimido en Edmonton, todos los días 🍊",
- nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_loyalty:"Recompensas",nav_gift:"Tarjetas de Regalo",nav_contact:"Contáctanos",
+ nav_menu:"Nuestro Menú",nav_loc:"Ubicación",nav_about:"Nosotros",nav_contact:"Contáctanos",
  intranet:"Intranet",intranet_login:"Acceso Intranet Personal",
  h1_eyebrow:"Nuevo en Edmonton",h1_title:"Prueba el lado dulce de lo saludable",h1_text:"Deliciosos batidos, jugos recién exprimidos y buena comida para llevar — inspirados en las superfrutas andinas.",
  h2_eyebrow:"Recién exprimido",h2_title:"Poder verde, todos los días",h2_text:"Jugos verdes prensados en frío y mezclas de frutas hechas al momento. Sin atajos, solo ingredientes reales.",
- h3_eyebrow:"Recompensas Mishki",h3_title:"Bebe, acumula y gana",h3_text:"Únete a nuestro programa de lealtad y acumula puntos con cada batido, jugo y bowl.",
- cta_menu:"Descubre nuestro menú",cta_juices:"Ver jugos frescos",cta_join:"Únete ahora",
+ cta_menu:"Descubre nuestro menú",cta_juices:"Ver jugos frescos",
  menu_title:"Descubre nuestro menú",menu_sub:"Deliciosos batidos, jugos recién exprimidos y buena comida para llevar.",
  all:"Todo",clear:"Quitar filtros",empty:"Ningún producto coincide con estos filtros.",
  about_title:"Hecho fresco. Hecho con amor.",
  about_p1:"\"Mishki\" significa \"dulce\" en quechua. Combinamos las superfrutas de los Andes — maracuyá, lúcuma, camu camu, maíz morado — con favoritos canadienses para crear bebidas tan ricas como saludables.",
  about_p2:"Cada batido, jugo y bowl se prepara al momento aquí mismo en Edmonton.",
  about_l1:"Frutas y verduras reales, preparadas a diario",about_l2:"Opciones veganas, sin lácteos y sin gluten",about_l3:"Orgullosamente local y comprometido con la comunidad",
- loy_title:"Recompensas Mishki",loy_text:"Gana puntos con cada compra y canjéalos por bebidas gratis, sorpresas de cumpleaños y ofertas exclusivas.",
- loy_s1:"Regístrate gratis",loy_s2:"Acumula puntos en cada pedido",loy_s3:"Canjea deliciosas recompensas",
- gift_title:"Tarjetas de Regalo",gift_sub:"El regalo perfecto para cualquier ocasión. Disponibles en tienda.",gift_1:"¡Gracias!",gift_2:"¡Feliz Cumpleaños!",gift_3:"¡Mantente Fresco!",
  loc_title:"Encuéntranos",loc_sub:"Visítanos en Edmonton, Alberta.",loc_addr:"Dirección",loc_addr_v:"Edmonton, AB, Canadá (dirección exacta próximamente)",loc_hours:"Horario",loc_hours_v:"Por anunciar",loc_phone:"Teléfono",loc_dir:"Cómo llegar",
  contact_title:"Contáctanos",contact_text:"¿Preguntas, catering, comentarios o ideas de colaboración? Escríbenos y nuestro equipo te responderá.",
  f_name:"Nombre completo",f_email:"Correo electrónico",f_topic:"Tema",f_msg:"Mensaje",t_general:"Consulta general",t_catering:"Catering",t_feedback:"Comentarios",t_jobs:"Empleos",send:"Enviar",
@@ -935,26 +850,13 @@ es:{
 const CATS=[
  {id:"juices",ico:"🧃",bg:"#FFE9D2"},{id:"essential",ico:"🍓",bg:"#FFE3E3"},
  {id:"wellness",ico:"🌿",bg:"#E5F4DA"},{id:"protein",ico:"💪",bg:"#FFF1D6"},
- {id:"andean",ico:"🏔️",bg:"#EFE2F7"},{id:"bowls",ico:"🥣",bg:"#FCE4EC"},
- {id:"snacks",ico:"🥟",bg:"#FFF8D6"},{id:"wraps",ico:"🌯",bg:"#E3F2FD"}];
+ {id:"andean",ico:"🏔️",bg:"#EFE2F7"}];
 const FILTERS=["vegan","veg","prot","df","gf","imm","post","energy"];
 const P=[
- {img:"1570696516188-ade861b84a49",cat:"essential",c:["#ED7472","#FFADA6"],tags:["veg","gf"],en:["Strawberry Sunrise","Strawberry, banana, orange juice and yogurt.","Strawberry|Banana|Orange juice|Yogurt"],es:["Amanecer de Fresa","Fresa, plátano, jugo de naranja y yogur.","Fresa|Plátano|Jugo de naranja|Yogur"]},
- {img:"1623065422902-30a2d299bbe4",cat:"essential",c:["#FCAE4C","#FFE284"],tags:["vegan","df","gf"],en:["Mango Tango","Mango, pineapple, passion fruit and apple juice.","Mango|Pineapple|Passion fruit|Apple juice"],es:["Mango Tango","Mango, piña, maracuyá y jugo de manzana.","Mango|Piña|Maracuyá|Jugo de manzana"]},
- {img:"1610970881699-44a5587cabec",cat:"wellness",c:["#7BBC7E","#C6E2A7"],tags:["vegan","df","gf","imm"],en:["Green Detox","Spinach, kale, pineapple, cucumber, ginger and lime.","Spinach|Kale|Pineapple|Cucumber|Ginger|Lime"],es:["Detox Verde","Espinaca, kale, piña, pepino, jengibre y limón.","Espinaca|Kale|Piña|Pepino|Jengibre|Limón"]},
- {img:"1622597467836-f3285f2131b8",cat:"wellness",c:["#D76868","#F7B1C8"],tags:["vegan","df","gf","imm"],en:["Camu Camu Boost","Camu camu, strawberry, mango and orange juice.","Camu camu|Strawberry|Mango|Orange juice"],es:["Camu Camu Boost","Camu camu, fresa, mango y jugo de naranja.","Camu camu|Fresa|Mango|Jugo de naranja"]},
- {img:"1542444592-0d5997f202eb",cat:"protein",c:["#99827A","#E3DBD8"],tags:["veg","prot","post","gf"],en:["Peanut Power","Banana, peanut butter, cacao, oat milk and protein.","Banana|Peanut butter|Cacao|Oat milk|Whey protein"],es:["Poder de Maní","Plátano, mantequilla de maní, cacao, leche de avena y proteína.","Plátano|Mantequilla de maní|Cacao|Leche de avena|Proteína whey"]},
- {img:"1662130187270-a4d52c700eb6",cat:"protein",c:["#AF9A92","#FFE9C9"],tags:["veg","prot","post","energy"],en:["Lúcuma Muscle","Lúcuma, banana, dates, milk, maca and protein.","Lúcuma|Banana|Dates|Milk|Maca|Whey protein"],es:["Lúcuma Muscle","Lúcuma, plátano, dátiles, leche, maca y proteína.","Lúcuma|Plátano|Dátiles|Leche|Maca|Proteína whey"]},
  {img:"1600271886742-f049cd451bba",cat:"juices",c:["#F8A34C","#FFDBA6"],tags:["vegan","df","gf","imm"],en:["Orange Carrot Zing","Fresh pressed orange, carrot, turmeric and ginger.","Orange|Carrot|Turmeric|Ginger"],es:["Naranja Zanahoria Zing","Naranja, zanahoria, cúrcuma y jengibre recién exprimidos.","Naranja|Zanahoria|Cúrcuma|Jengibre"]},
  {img:"1628751584748-0d780bad3f06",cat:"juices",c:["#6DA470","#D6EAC0"],tags:["vegan","df","gf","energy"],en:["Celery Cleanse","Fresh pressed celery, green apple, cucumber and lemon.","Celery|Green apple|Cucumber|Lemon"],es:["Limpieza de Apio","Apio, manzana verde, pepino y limón recién exprimidos.","Apio|Manzana verde|Pepino|Limón"]},
  {img:"images/chicha.jpg",active:true,cat:"juices",c:["#805AAE","#DDB3E4"],tags:["vegan","df","gf"],en:["Chicha Morada Juice","Purple corn infusion with pineapple, cinnamon and clove.","Purple corn|Pineapple|Cinnamon|Clove|Lime"],es:["Jugo de Chicha Morada","Infusión de maíz morado con piña, canela y clavo.","Maíz morado|Piña|Canela|Clavo|Limón"]},
  {img:"images/maracuya.jpg",active:true,cat:"juices",c:["#FBC266","#FFF8BA"],tags:["vegan","df","gf","imm"],en:["Maracuyá Juice","Passion fruit, mango and a squeeze of lime.","Passion fruit|Mango|Lime|Agave"],es:["Jugo de Maracuyá","Maracuyá, mango y un toque de limón.","Maracuyá|Mango|Limón|Agave"]},
- {img:"1627308594190-a057cd4bfac8",cat:"bowls",c:["#975FB8","#CABAE6"],tags:["vegan","df","energy"],en:["Açaí Classic Bowl","Açaí, banana and berries topped with granola and coconut.","Açaí|Banana|Berries|Granola|Coconut"],es:["Bowl Clásico de Açaí","Açaí, plátano y frutos rojos con granola y coco.","Açaí|Plátano|Frutos rojos|Granola|Coco"]},
- {img:"1621797350488-fb28c9217e3b",cat:"bowls",c:["#EE854C","#FFE9C9"],tags:["veg","energy"],en:["Lúcuma Dream Bowl","Lúcuma, banana and yogurt topped with quinoa pops and honey.","Lúcuma|Banana|Yogurt|Puffed quinoa|Honey"],es:["Bowl Sueño de Lúcuma","Lúcuma, plátano y yogur con quinua pop y miel.","Lúcuma|Plátano|Yogur|Quinua pop|Miel"]},
- {img:"1624128082309-35000879a89f",cat:"snacks",c:["#D2A679","#FFE9BF"],tags:["veg"],en:["Cheese Empanada","Golden baked empanada filled with melted cheese.","Wheat dough|Cheese|Butter"],es:["Empanada de Queso","Empanada horneada rellena de queso derretido.","Masa de trigo|Queso|Mantequilla"]},
- {img:"1624128082323-beb6b8b508db",cat:"snacks",c:["#AF9A92","#FFE9C9"],tags:["prot"],en:["Beef Empanada","Baked empanada with seasoned beef, onion and olive.","Wheat dough|Beef|Onion|Olive|Egg"],es:["Empanada de Carne","Empanada horneada con carne sazonada, cebolla y aceituna.","Masa de trigo|Carne|Cebolla|Aceituna|Huevo"]},
- {img:"1752095809096-f09d22c466c5",cat:"wraps",c:["#88AE6D","#E6F2D8"],tags:["veg","prot"],en:["Quinoa Veggie Wrap","Quinoa, hummus, greens, tomato and avocado.","Tortilla|Quinoa|Hummus|Greens|Tomato|Avocado"],es:["Wrap Vegetal de Quinua","Quinua, hummus, hojas verdes, tomate y palta.","Tortilla|Quinua|Hummus|Hojas verdes|Tomate|Palta"]},
- {img:"1700768400970-428c50bffc11",cat:"wraps",c:["#E47B5B","#FFDBD0"],tags:["prot","post"],en:["Chicken Ají Sandwich","Grilled chicken with ají amarillo mayo and lettuce.","Bread|Grilled chicken|Ají amarillo mayo|Lettuce|Tomato"],es:["Sándwich de Pollo al Ají","Pollo a la plancha con mayonesa de ají amarillo y lechuga.","Pan|Pollo a la plancha|Mayonesa de ají amarillo|Lechuga|Tomate"]}
 ];
 
 /* =====================================================================
@@ -988,10 +890,12 @@ function setLang(l){lang=l;store.set("mishki_lang",l);applyLang()}
 $$("[data-set-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.setLang)));
 
 function renderCats(){
+  if(!$("#cats"))return;
   $("#cats").innerHTML = CATS.map(c=>`<button class="cat${c.id!=="juices"?" future":""}" type="button" data-cat="${c.id}" aria-pressed="${activeCat===c.id}">${c.id!=="juices"?`<em class="soon">${t("future")}</em>`:""}<span class="ico" style="background:${c.bg}" aria-hidden="true"><img src="${ph(catImg(c.id),240)}" alt="" loading="lazy"></span><span>${t("cat_"+c.id)}</span></button>`).join("");
   $$(".cat").forEach(b=>b.onclick=()=>{activeCat = activeCat===b.dataset.cat?null:b.dataset.cat;renderCats();renderProducts();if(activeCat){const y=$("#products").getBoundingClientRect().top+scrollY-($("header.site").offsetHeight+16);scrollTo({top:y,behavior:"smooth"});}});
 }
 function renderFilters(){
+  if(!$("#filters"))return;
   $("#filters").innerHTML = FILTERS.map(f=>`<button class="chip" type="button" data-f="${f}" aria-pressed="${activeFilters.has(f)}">${t("f_"+f)}</button>`).join("")
    + `<button class="chip clear" type="button" id="clearF">✕ ${t("clear")}</button>`;
   $$(".chip[data-f]").forEach(b=>b.onclick=()=>{activeFilters.has(b.dataset.f)?activeFilters.delete(b.dataset.f):activeFilters.add(b.dataset.f);renderFilters();renderProducts()});
